@@ -384,6 +384,6 @@ extension Complex: Sendable {
 extension ComplexModule.Complex<Double> {
     fileprivate func _toInternalFormat() -> XestiNumbers.Complex {
         XestiNumbers.Complex(realPart: XestiNumbers.Real(real),
-                          imaginaryPart: XestiNumbers.Real(imaginary))
+                             imaginaryPart: XestiNumbers.Real(imaginary))
     }
 }

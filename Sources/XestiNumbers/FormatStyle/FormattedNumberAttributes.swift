@@ -7,6 +7,7 @@ extension AttributeDynamicLookup {
         self[T.self]
     }
 
+    // swiftlint:disable:next line_length
     public subscript<T: AttributedStringKey>(dynamicMember keyPath: KeyPath<AttributeScopes.XestiNumbersAttributes.FormattedNumberAttributes, T>) -> T {
         self[T.self]
     }
