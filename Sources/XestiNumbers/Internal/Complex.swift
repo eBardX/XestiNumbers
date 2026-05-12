@@ -289,7 +289,6 @@ extension Complex {
     // MARK: Private Nested Types
 
     private typealias ExternalFormat = ComplexModule.Complex<Double>
-    private typealias InternalFormat = Self
 
     // MARK: Private Type Properties
 

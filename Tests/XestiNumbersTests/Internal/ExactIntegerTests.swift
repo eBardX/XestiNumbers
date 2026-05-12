@@ -22,7 +22,7 @@ extension ExactIntegerTests {
     @Test
     func test_bitwiseAnd_with() {
         #expect(ei(0b1100).bitwiseAnd(with: ei(0b1010)).isEqual(to: ei(0b1000)))
-        #expect(ei(0xFF).bitwiseAnd(with: ei(0x0F)).isEqual(to: ei(0x0F)))
+        #expect(ei(0xff).bitwiseAnd(with: ei(0x0f)).isEqual(to: ei(0x0f)))
         #expect(ei(0).bitwiseAnd(with: ei(42)).isEqual(to: ei(0)))
         #expect(ei(-1).bitwiseAnd(with: ei(42)).isEqual(to: ei(42)))
     }
@@ -38,7 +38,7 @@ extension ExactIntegerTests {
     func test_bitwiseOr_with() {
         #expect(ei(0b1100).bitwiseOr(with: ei(0b1010)).isEqual(to: ei(0b1110)))
         #expect(ei(0).bitwiseOr(with: ei(42)).isEqual(to: ei(42)))
-        #expect(ei(0xFF).bitwiseOr(with: ei(0x0F)).isEqual(to: ei(0xFF)))
+        #expect(ei(0xff).bitwiseOr(with: ei(0x0f)).isEqual(to: ei(0xff)))
     }
 
     @Test

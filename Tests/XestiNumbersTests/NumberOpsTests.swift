@@ -36,7 +36,7 @@ extension NumberOpsTests {
     @Test
     func test_bitwiseAnd() {
         #expect((Number(0b1100) & Number(0b1010)) == Number(0b1000))
-        #expect((Number(0xFF) & Number(0x0F)) == Number(0x0F))
+        #expect((Number(0xff) & Number(0x0f)) == Number(0x0f))
     }
 
     @Test
@@ -62,7 +62,7 @@ extension NumberOpsTests {
     @Test
     func test_bitwiseOr() {
         #expect((Number(0b1100) | Number(0b1010)) == Number(0b1110))
-        #expect((Number(0) | Number(0xFF)) == Number(0xFF))
+        #expect((Number(0) | Number(0xff)) == Number(0xff))
     }
 
     @Test
@@ -77,7 +77,7 @@ extension NumberOpsTests {
     @Test
     func test_bitwiseXor() {
         #expect((Number(0b1100) ^ Number(0b1010)) == Number(0b0110))
-        #expect((Number(0xFF) ^ Number(0xFF)) == Number(0))
+        #expect((Number(0xff) ^ Number(0xff)) == Number(0))
     }
 
     @Test

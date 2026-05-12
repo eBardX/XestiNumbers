@@ -51,7 +51,7 @@ extension ExactInteger {
 
     // MARK: Internal Initializers
 
-    internal init<T: BinaryFloatingPoint>(_ value: T) {
+    internal init(_ value: some BinaryFloatingPoint) {
         if let intValue = Int(exactly: value) {
             self.init(.small(intValue))
         } else if let bigIntValue = BigInt(exactly: value) {
@@ -61,7 +61,7 @@ extension ExactInteger {
         }
     }
 
-    internal init<T: BinaryInteger>(_ value: T) {
+    internal init(_ value: some BinaryInteger) {
         if let intValue = Int(exactly: value) {
             self.init(.small(intValue))
         } else {

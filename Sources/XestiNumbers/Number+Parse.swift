@@ -13,7 +13,7 @@ extension Number {
     /// - Parameter input:  The input string to parse.
     ///
     /// - Returns:  The parsed number on success, or `nil` on failure.
-    public static func parse<S: StringProtocol>(input: S) -> Self? {
+    public static func parse(input: some StringProtocol) -> Self? {
         guard let (text, radix, exactness) = _matchPrefixes(input: String(input))
         else { return nil }
 
@@ -24,9 +24,9 @@ extension Number {
 
     // MARK: Internal Type Methods
 
-    internal static func parse<S: StringProtocol>(input: S,
-                                                  radix: Radix,
-                                                  exactness: Exactness) -> Self? {
+    internal static func parse(input: some StringProtocol,
+                               radix: Radix,
+                               exactness: Exactness) -> Self? {
         guard let value = _parseNumber(input: String(input),
                                        radix: radix,
                                        exactness: exactness)

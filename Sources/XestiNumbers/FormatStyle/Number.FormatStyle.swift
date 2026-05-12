@@ -315,7 +315,9 @@ extension Number.FormatStyle: FormatStyle {
 
 extension FormatStyle where Self == Number.FormatStyle {
     /// A style for formatting a number.
-    public static var number: Self { Self() }
+    public static var number: Self {
+        Self()
+    }
 }
 
 // MARK: -

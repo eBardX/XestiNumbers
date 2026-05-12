@@ -50,7 +50,7 @@ extension FloatingPoint {
 
     // MARK: Internal Initializers
 
-    internal init<T: BinaryFloatingPoint>(_ value: T) {
+    internal init(_ value: some BinaryFloatingPoint) {
         if value.isZero {
             self = .zero    // avoid -0.0
         } else if let dblValue = Double(exactly: value) {
@@ -62,7 +62,7 @@ extension FloatingPoint {
         }
     }
 
-    internal init<T: BinaryInteger>(_ value: T) {
+    internal init(_ value: some BinaryInteger) {
         if let dblValue = Double(exactly: value) {
             self.init(dblValue)
         } else {

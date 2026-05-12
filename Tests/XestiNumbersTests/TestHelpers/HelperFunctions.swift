@@ -35,11 +35,11 @@ internal func cx(_ rval: Fraction,
                                 denominator: ival.denominator))
 }
 
-internal func ei<T: BinaryInteger>(_ val: T) -> ExactInteger {
+internal func ei(_ val: some BinaryInteger) -> ExactInteger {
     ExactInteger(val)
 }
 
-internal func fp<T: BinaryFloatingPoint>(_ val: T) -> FloatingPoint {
+internal func fp(_ val: some BinaryFloatingPoint) -> FloatingPoint {
     FloatingPoint(val)
 }
 
@@ -72,11 +72,11 @@ internal func nfr(_ num: Number,
            denominator: den)
 }
 
-internal func rei<T: BinaryInteger>(_ val: T) -> Real {
+internal func rei(_ val: some BinaryInteger) -> Real {
     Real(.exactInteger(ei(val)))
 }
 
-internal func rfp<T: BinaryFloatingPoint>(_ val: T) -> Real {
+internal func rfp(_ val: some BinaryFloatingPoint) -> Real {
     Real(.floatingPoint(fp(val)))
 }
 

@@ -21,6 +21,7 @@ extension Complex {
         }
     }
 }
+
 extension Double {
     internal func isApproximatelyEqual(to other: Self,
                                        tolerance: Self = 1e-10) -> Bool {

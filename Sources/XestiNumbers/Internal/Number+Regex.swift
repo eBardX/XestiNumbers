@@ -6,7 +6,7 @@ extension Number {
 
     // MARK: Internal Type Properties
 
-    nonisolated(unsafe) internal static let cxBinValueP = Regex {
+    internal nonisolated(unsafe) static let cxBinValueP = Regex {
         Capture {
             binReal
         }
@@ -16,7 +16,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) internal static let cxBinValueR = Regex {
+    internal nonisolated(unsafe) static let cxBinValueR = Regex {
         Capture {
             Optionally {
                 binReal
@@ -34,7 +34,7 @@ extension Number {
         "i"
     }
 
-    nonisolated(unsafe) internal static let cxDecValueP = Regex {
+    internal nonisolated(unsafe) static let cxDecValueP = Regex {
         Capture {
             decReal
         }
@@ -44,7 +44,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) internal static let cxDecValueR = Regex {
+    internal nonisolated(unsafe) static let cxDecValueR = Regex {
         Capture {
             Optionally {
                 decReal
@@ -62,7 +62,7 @@ extension Number {
         "i"
     }
 
-    nonisolated(unsafe) internal static let cxHexValueP = Regex {
+    internal nonisolated(unsafe) static let cxHexValueP = Regex {
         Capture {
             hexReal
         }
@@ -72,7 +72,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) internal static let cxHexValueR = Regex {
+    internal nonisolated(unsafe) static let cxHexValueR = Regex {
         Capture {
             Optionally {
                 hexReal
@@ -90,7 +90,7 @@ extension Number {
         "i"
     }
 
-    nonisolated(unsafe) internal static let cxOctValueP = Regex {
+    internal nonisolated(unsafe) static let cxOctValueP = Regex {
         Capture {
             octReal
         }
@@ -100,7 +100,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) internal static let cxOctValueR = Regex {
+    internal nonisolated(unsafe) static let cxOctValueR = Regex {
         Capture {
             Optionally {
                 octReal
@@ -118,35 +118,35 @@ extension Number {
         "i"
     }
 
-    nonisolated(unsafe) internal static let eiBinValue = Regex {
+    internal nonisolated(unsafe) static let eiBinValue = Regex {
         Optionally {
             sign
         }
         binUInteger
     }
 
-    nonisolated(unsafe) internal static let eiDecValue = Regex {
+    internal nonisolated(unsafe) static let eiDecValue = Regex {
         Optionally {
             sign
         }
         decUInteger
     }
 
-    nonisolated(unsafe) internal static let eiHexValue = Regex {
+    internal nonisolated(unsafe) static let eiHexValue = Regex {
         Optionally {
             sign
         }
         hexUInteger
     }
 
-    nonisolated(unsafe) internal static let eiOctValue = Regex {
+    internal nonisolated(unsafe) static let eiOctValue = Regex {
         Optionally {
             sign
         }
         octUInteger
     }
 
-    nonisolated(unsafe) internal static let fpDecValue = Regex {
+    internal nonisolated(unsafe) static let fpDecValue = Regex {
         ChoiceOf {
             Regex {
                 Optionally {
@@ -161,7 +161,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) internal static let fracBinValue = Regex {
+    internal nonisolated(unsafe) static let fracBinValue = Regex {
         Capture {
             Optionally {
                 sign
@@ -174,7 +174,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) internal static let fracDecValue = Regex {
+    internal nonisolated(unsafe) static let fracDecValue = Regex {
         Capture {
             Optionally {
                 sign
@@ -187,7 +187,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) internal static let fracHexValue = Regex {
+    internal nonisolated(unsafe) static let fracHexValue = Regex {
         Capture {
             Optionally {
                 sign
@@ -200,7 +200,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) internal static let fracOctValue = Regex {
+    internal nonisolated(unsafe) static let fracOctValue = Regex {
         Capture {
             Optionally {
                 sign
@@ -213,19 +213,19 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) internal static let pfxExactness = Regex {
+    internal nonisolated(unsafe) static let pfxExactness = Regex {
         "#"
         exactness
     }
 
-    nonisolated(unsafe) internal static let pfxRadix = Regex {
+    internal nonisolated(unsafe) static let pfxRadix = Regex {
         "#"
         radix
     }
 
     // MARK: Private Type Properties
 
-    nonisolated(unsafe) private static let binReal = Regex {
+    private nonisolated(unsafe) static let binReal = Regex {
         ChoiceOf {
             Regex {
                 Optionally {
@@ -240,7 +240,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) private static let decReal = Regex {
+    private nonisolated(unsafe) static let decReal = Regex {
         ChoiceOf {
             Regex {
                 Optionally {
@@ -255,7 +255,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) private static let hexReal = Regex {
+    private nonisolated(unsafe) static let hexReal = Regex {
         ChoiceOf {
             Regex {
                 Optionally {
@@ -270,7 +270,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) private static let octReal = Regex {
+    private nonisolated(unsafe) static let octReal = Regex {
         ChoiceOf {
             Regex {
                 Optionally {
@@ -285,7 +285,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) private static let binUReal = Regex {
+    private nonisolated(unsafe) static let binUReal = Regex {
         binUInteger
         Optionally {
             "/"
@@ -293,7 +293,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) private static let decUReal = Regex {
+    private nonisolated(unsafe) static let decUReal = Regex {
         ChoiceOf {
             Regex {
                 decUInteger
@@ -306,7 +306,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) private static let hexUReal = Regex {
+    private nonisolated(unsafe) static let hexUReal = Regex {
         hexUInteger
         Optionally {
             "/"
@@ -314,7 +314,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) private static let octUReal = Regex {
+    private nonisolated(unsafe) static let octUReal = Regex {
         octUInteger
         Optionally {
             "/"
@@ -322,7 +322,7 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) private static let decSuffix = Regex {
+    private nonisolated(unsafe) static let decSuffix = Regex {
         "e"
         Optionally {
             sign
@@ -330,7 +330,7 @@ extension Number {
         decUInteger
     }
 
-    nonisolated(unsafe) private static let decUFloat = Regex {
+    private nonisolated(unsafe) static let decUFloat = Regex {
         ChoiceOf {
             Regex {
                 ChoiceOf {
@@ -357,31 +357,31 @@ extension Number {
         }
     }
 
-    nonisolated(unsafe) private static let binUInteger = Regex {
+    private nonisolated(unsafe) static let binUInteger = Regex {
         OneOrMore {
             binDigit
         }
     }
 
-    nonisolated(unsafe) private static let decUInteger = Regex {
+    private nonisolated(unsafe) static let decUInteger = Regex {
         OneOrMore {
             decDigit
         }
     }
 
-    nonisolated(unsafe) private static let hexUInteger = Regex {
+    private nonisolated(unsafe) static let hexUInteger = Regex {
         OneOrMore {
             hexDigit
         }
     }
 
-    nonisolated(unsafe) private static let octUInteger = Regex {
+    private nonisolated(unsafe) static let octUInteger = Regex {
         OneOrMore {
             octDigit
         }
     }
 
-    nonisolated(unsafe) private static let special = Regex {
+    private nonisolated(unsafe) static let special = Regex {
         ChoiceOf {
             "inf"
             "nan"

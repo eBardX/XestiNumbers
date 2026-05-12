@@ -75,11 +75,11 @@ extension Real {
 
     // MARK: Internal Initializers
 
-    internal init<T: BinaryFloatingPoint>(_ value: T) {
+    internal init(_ value: some BinaryFloatingPoint) {
         self.init(.floatingPoint(FloatingPoint(value)))
     }
 
-    internal init<T: BinaryInteger>(_ value: T) {
+    internal init(_ value: some BinaryInteger) {
         self.init(.exactInteger(ExactInteger(value)))
     }
 
@@ -125,7 +125,7 @@ extension Real {
     internal var denominator: Self {
         switch value {
         case .exactInteger:
-                .exactOne
+            .exactOne
 
         case let .floatingPoint(val):
             if val.isInteger {
@@ -141,7 +141,8 @@ extension Real {
 
     internal var exact: Self {
         switch value {
-        case .exactInteger, .fraction:
+        case .exactInteger,
+             .fraction:
             self
 
         case let .floatingPoint(val):
@@ -198,7 +199,8 @@ extension Real {
 
     internal var isExact: Bool {
         switch value {
-        case .exactInteger, .fraction:
+        case .exactInteger,
+             .fraction:
             true
 
         case .floatingPoint:
@@ -208,7 +210,8 @@ extension Real {
 
     internal var isFinite: Bool {
         switch value {
-        case .exactInteger, .fraction:
+        case .exactInteger,
+             .fraction:
             true
 
         case let .floatingPoint(val):
@@ -218,7 +221,8 @@ extension Real {
 
     internal var isInexact: Bool {
         switch value {
-        case .exactInteger, .fraction:
+        case .exactInteger,
+             .fraction:
             false
 
         case .floatingPoint:
@@ -228,7 +232,8 @@ extension Real {
 
     internal var isInfinite: Bool {
         switch value {
-        case .exactInteger, .fraction:
+        case .exactInteger,
+             .fraction:
             false
 
         case let .floatingPoint(val):
@@ -251,7 +256,8 @@ extension Real {
 
     internal var isNaN: Bool {
         switch value {
-        case .exactInteger, .fraction:
+        case .exactInteger,
+             .fraction:
             false
 
         case let .floatingPoint(val):
@@ -291,7 +297,8 @@ extension Real {
 
     internal var isRational: Bool {
         switch value {
-        case .exactInteger, .fraction:
+        case .exactInteger,
+             .fraction:
             true
 
         case let .floatingPoint(val):
@@ -331,7 +338,8 @@ extension Real {
 
     internal var simplified: Self {
         switch value {
-        case .exactInteger, .floatingPoint:
+        case .exactInteger,
+             .floatingPoint:
             self
 
         case let .fraction(val):
@@ -381,10 +389,12 @@ extension Real {
         case let (.fraction(val1), .fraction(val2)):
             Self(.fraction(val1.adding(val2)))
 
-        case (.floatingPoint, _), (_, .floatingPoint):
+        case (_, .floatingPoint),
+             (.floatingPoint, _):
             Self(.floatingPoint(_toFloatingPoint().adding(other._toFloatingPoint())))
 
-        case (.fraction, _), (_, .fraction):
+        case (_, .fraction),
+             (.fraction, _):
             Self(.fraction(_toFraction().adding(other._toFraction())))
         }
     }
@@ -494,10 +504,12 @@ extension Real {
         case let (.fraction(val1), .fraction(val2)):
             return Self(.fraction(val1.divided(by: val2)))
 
-        case (.floatingPoint, _), (_, .floatingPoint):
+        case (_, .floatingPoint),
+             (.floatingPoint, _):
             return Self(.floatingPoint(_toFloatingPoint().divided(by: other._toFloatingPoint())))
 
-        case (.fraction, _), (_, .fraction):
+        case (_, .fraction),
+             (.fraction, _):
             return Self(.fraction(_toFraction().divided(by: other._toFraction())))
         }
     }
@@ -598,10 +610,12 @@ extension Real {
         case let (.fraction(val1), .fraction(val2)):
             val1.isEqual(to: val2)
 
-        case (.floatingPoint, _), (_, .floatingPoint):
+        case (_, .floatingPoint),
+             (.floatingPoint, _):
             _toFloatingPoint().isEqual(to: other._toFloatingPoint())
 
-        case (.fraction, _), (_, .fraction):
+        case (_, .fraction),
+             (.fraction, _):
             _toFraction().isEqual(to: other._toFraction())
         }
     }
@@ -617,10 +631,12 @@ extension Real {
         case let (.fraction(val1), .fraction(val2)):
             val1.isLess(than: val2)
 
-        case (.floatingPoint, _), (_, .floatingPoint):
+        case (_, .floatingPoint),
+             (.floatingPoint, _):
             _toFloatingPoint().isLess(than: other._toFloatingPoint())
 
-        case (.fraction, _), (_, .fraction):
+        case (_, .fraction),
+             (.fraction, _):
             _toFraction().isLess(than: other._toFraction())
         }
     }
@@ -676,10 +692,12 @@ extension Real {
         case let (.fraction(val1), .fraction(val2)):
             Self(.fraction(val1.multiplied(by: val2)))
 
-        case (.floatingPoint, _), (_, .floatingPoint):
+        case (_, .floatingPoint),
+             (.floatingPoint, _):
             Self(.floatingPoint(_toFloatingPoint().multiplied(by: other._toFloatingPoint())))
 
-        case (.fraction, _), (_, .fraction):
+        case (_, .fraction),
+             (.fraction, _):
             Self(.fraction(_toFraction().multiplied(by: other._toFraction())))
         }
     }
@@ -808,10 +826,12 @@ extension Real {
         case let (.fraction(val1), .fraction(val2)):
             Self(.fraction(val1.subtracting(val2)))
 
-        case (.floatingPoint, _), (_, .floatingPoint):
+        case (_, .floatingPoint),
+             (.floatingPoint, _):
             Self(.floatingPoint(_toFloatingPoint().subtracting(other._toFloatingPoint())))
 
-        case (.fraction, _), (_, .fraction):
+        case (_, .fraction),
+             (.fraction, _):
             Self(.fraction(_toFraction().subtracting(other._toFraction())))
         }
     }

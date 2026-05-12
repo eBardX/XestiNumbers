@@ -34,7 +34,7 @@ extension Number {
     /// invalid format, the result is `nil`.
     ///
     /// - Parameter value:  The string value to parse.
-    public init?<S: StringProtocol>(_ value: S) {
+    public init?(_ value: some StringProtocol) {
         if let tmpValue = Self.parse(input: value) {
             self = tmpValue
         } else {
@@ -45,14 +45,14 @@ extension Number {
     /// Creates a new number from the provided floating-point value.
     ///
     /// - Parameter value:  The floating-point value to convert.
-    public init<T: BinaryFloatingPoint>(_ value: T) {
+    public init(_ value: some BinaryFloatingPoint) {
         self.init(.real(Real(value)))
     }
 
     /// Creates a new number from the provided integer value.
     ///
     /// - Parameter value:  The integer value to convert.
-    public init<T: BinaryInteger>(_ value: T) {
+    public init(_ value: some BinaryInteger) {
         self.init(.real(Real(value)))
     }
 

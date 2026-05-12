@@ -44,8 +44,8 @@ extension RealTests {
     @Test
     func test_bitwiseAnd_with() {
         #expect(rei(12).bitwiseAnd(with: rei(10)).isEqual(to: rei(8)))
-        #expect(rei(0xFF).bitwiseAnd(with: rei(0x0F)).isEqual(to: rei(0x0F)))
-        #expect(rei(0).bitwiseAnd(with: rei(0xFF)).isEqual(to: rei(0)))
+        #expect(rei(0xff).bitwiseAnd(with: rei(0x0f)).isEqual(to: rei(0x0f)))
+        #expect(rei(0).bitwiseAnd(with: rei(0xff)).isEqual(to: rei(0)))
         #expect(rfp(12.0).bitwiseAnd(with: rfp(10.0)).isEqual(to: rfp(8.0)))
     }
 
@@ -60,7 +60,7 @@ extension RealTests {
     @Test
     func test_bitwiseOr_with() {
         #expect(rei(12).bitwiseOr(with: rei(10)).isEqual(to: rei(14)))
-        #expect(rei(0).bitwiseOr(with: rei(0xFF)).isEqual(to: rei(0xFF)))
+        #expect(rei(0).bitwiseOr(with: rei(0xff)).isEqual(to: rei(0xff)))
         #expect(rfp(12.0).bitwiseOr(with: rfp(10.0)).isEqual(to: rfp(14.0)))
     }
 
@@ -81,7 +81,7 @@ extension RealTests {
     @Test
     func test_bitwiseXor_with() {
         #expect(rei(12).bitwiseXor(with: rei(10)).isEqual(to: rei(6)))
-        #expect(rei(0xFF).bitwiseXor(with: rei(0xFF)).isEqual(to: rei(0)))
+        #expect(rei(0xff).bitwiseXor(with: rei(0xff)).isEqual(to: rei(0)))
         #expect(rfp(12.0).bitwiseXor(with: rfp(10.0)).isEqual(to: rfp(6.0)))
     }
 
