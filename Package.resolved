@@ -1,5 +1,5 @@
 {
-  "originHash" : "4482f7caea94729cab0d220bccd9b6544d09f0d83c1005885d4f25c0eebe532b",
+  "originHash" : "37766b7785d7f39e9d7c6b4b91864b705ea8f43a8d84696e75e485fa03e3e026",
   "pins" : [
     {
       "identity" : "bigint",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser.git",
       "state" : {
-        "revision" : "626b5b7b2f45e1b0b1c6f4a309296d1d21d7311b",
-        "version" : "1.7.1"
+        "revision" : "6a52f3251125d74daf04fcbd5e6f08a75d074382",
+        "version" : "1.8.2"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eBardX/XestiTools.git",
       "state" : {
-        "revision" : "1c619962cf024f994be792ca81d5e0f947c29039",
-        "version" : "7.4.0"
+        "revision" : "0a47696aea38d188b8c71fadefa2810cd023bcdd",
+        "version" : "7.5.0"
       }
     },
     {

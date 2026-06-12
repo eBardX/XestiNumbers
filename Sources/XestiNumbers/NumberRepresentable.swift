@@ -261,3 +261,11 @@ extension NumberRepresentable where Self: ExpressibleByStringLiteral {
         self.init(numberValue: Number(stringLiteral: value))!   // swiftlint:disable:this force_unwrapping
     }
 }
+
+// MARK: - Hashable
+
+extension NumberRepresentable where Self: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        numberValue.hash(into: &hasher)
+    }
+}
