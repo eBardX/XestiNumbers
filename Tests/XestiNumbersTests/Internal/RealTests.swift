@@ -1,9 +1,10 @@
 // © 2025–2026 John Gary Pusey (see LICENSE.md)
 
-// swiftlint:disable file_length force_unwrapping
+// swiftlint:disable file_length
 
 import Testing
 @testable import XestiNumbers
+import XestiTools
 
 struct RealTests {
 }
@@ -560,33 +561,33 @@ extension RealTests {
 
     @Test
     func test_rationalize() {
-        #expect(Real.pi.exact.rationalize(within: rfr(1, 10))!.isEqual(to: rfr(16, 5)))
-        #expect(Real.pi.exact.rationalize(within: rfr(1, 100))!.isEqual(to: rfr(22, 7)))
-        #expect(Real.pi.exact.rationalize(within: rfr(1, 1_000))!.isEqual(to: rfr(201, 64)))
-        #expect(Real.pi.exact.rationalize(within: rfr(1, 10_000))!.isEqual(to: rfr(333, 106)))
-        #expect(Real.pi.exact.rationalize(within: rfr(1, 100_000))!.isEqual(to: rfr(355, 113)))
-        #expect(Real.pi.exact.rationalize(within: rfr(1, 1_000_000))!.isEqual(to: rfr(355, 113)))
+        #expect(Real.pi.exact.rationalize(within: rfr(1, 10)).require().isEqual(to: rfr(16, 5)))
+        #expect(Real.pi.exact.rationalize(within: rfr(1, 100)).require().isEqual(to: rfr(22, 7)))
+        #expect(Real.pi.exact.rationalize(within: rfr(1, 1_000)).require().isEqual(to: rfr(201, 64)))
+        #expect(Real.pi.exact.rationalize(within: rfr(1, 10_000)).require().isEqual(to: rfr(333, 106)))
+        #expect(Real.pi.exact.rationalize(within: rfr(1, 100_000)).require().isEqual(to: rfr(355, 113)))
+        #expect(Real.pi.exact.rationalize(within: rfr(1, 1_000_000)).require().isEqual(to: rfr(355, 113)))
 
-        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 10))!.isEqual(to: rfr(-16, 5)))
-        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 100))!.isEqual(to: rfr(-22, 7)))
-        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 1_000))!.isEqual(to: rfr(-201, 64)))
-        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 10_000))!.isEqual(to: rfr(-333, 106)))
-        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 100_000))!.isEqual(to: rfr(-355, 113)))
-        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 1_000_000))!.isEqual(to: rfr(-355, 113)))
+        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 10)).require().isEqual(to: rfr(-16, 5)))
+        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 100)).require().isEqual(to: rfr(-22, 7)))
+        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 1_000)).require().isEqual(to: rfr(-201, 64)))
+        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 10_000)).require().isEqual(to: rfr(-333, 106)))
+        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 100_000)).require().isEqual(to: rfr(-355, 113)))
+        #expect(Real.pi.negated().exact.rationalize(within: rfr(1, 1_000_000)).require().isEqual(to: rfr(-355, 113)))
 
-        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 10))!.isEqual(to: rfr(1, 2)))
-        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 100))!.isEqual(to: rfr(7, 12)))
-        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 1_000))!.isEqual(to: rfr(7, 12)))
-        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 10_000))!.isEqual(to: rfr(122, 209)))
-        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 100_000))!.isEqual(to: rfr(157, 269)))
-        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 1_000_000))!.isEqual(to: rfr(157, 269)))
+        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 10)).require().isEqual(to: rfr(1, 2)))
+        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 100)).require().isEqual(to: rfr(7, 12)))
+        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 1_000)).require().isEqual(to: rfr(7, 12)))
+        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 10_000)).require().isEqual(to: rfr(122, 209)))
+        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 100_000)).require().isEqual(to: rfr(157, 269)))
+        #expect(rfp(0.5836472).exact.rationalize(within: rfr(1, 1_000_000)).require().isEqual(to: rfr(157, 269)))
 
-        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 10))!.isEqual(to: rfr(-1, 2)))
-        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 100))!.isEqual(to: rfr(-7, 12)))
-        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 1_000))!.isEqual(to: rfr(-7, 12)))
-        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 10_000))!.isEqual(to: rfr(-122, 209)))
-        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 100_000))!.isEqual(to: rfr(-157, 269)))
-        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 1_000_000))!.isEqual(to: rfr(-157, 269)))
+        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 10)).require().isEqual(to: rfr(-1, 2)))
+        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 100)).require().isEqual(to: rfr(-7, 12)))
+        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 1_000)).require().isEqual(to: rfr(-7, 12)))
+        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 10_000)).require().isEqual(to: rfr(-122, 209)))
+        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 100_000)).require().isEqual(to: rfr(-157, 269)))
+        #expect(rfp(-0.5836472).exact.rationalize(within: rfr(1, 1_000_000)).require().isEqual(to: rfr(-157, 269)))
     }
 
     @Test
@@ -653,5 +654,3 @@ extension RealTests {
         #expect(rfr(-7, 2).truncate().isEqual(to: rei(-3)))
     }
 }
-
-// swiftlint:enable force_unwrapping
