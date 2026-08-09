@@ -11,7 +11,7 @@ struct NumberRepresentableTests {
 
 extension NumberRepresentableTests {
     @Test
-    func test_codableRoundTrip() throws {
+    func codableRoundTrip() throws {
         let original: TestNumberType = 42
         let data = try JSONEncoder().encode(original)
         let decoded = try JSONDecoder().decode(TestNumberType.self, from: data)
@@ -20,7 +20,7 @@ extension NumberRepresentableTests {
     }
 
     @Test
-    func test_comparable() {
+    func comparable() {
         let a: TestNumberType = 3
         let b: TestNumberType = 7
 
@@ -29,14 +29,14 @@ extension NumberRepresentableTests {
     }
 
     @Test
-    func test_description() {
+    func description() {
         let value: TestNumberType = 42
 
         #expect(value.description == "42")
     }
 
     @Test
-    func test_equality() {
+    func equality() {
         let a: TestNumberType = 10
         let b: TestNumberType = 10
 
@@ -44,14 +44,14 @@ extension NumberRepresentableTests {
     }
 
     @Test
-    func test_expressibleByIntegerLiteral() {
+    func expressibleByIntegerLiteral() {
         let v: TestNumberType = 10
 
         #expect(v.numberValue == Number(10))
     }
 
     @Test
-    func test_inequality() {
+    func inequality() {
         let a: TestNumberType = 10
         let b: TestNumberType = 20
 
@@ -59,14 +59,14 @@ extension NumberRepresentableTests {
     }
 
     @Test
-    func test_initInvalidValue() {
+    func initInvalidValue() {
         let result = TestNumberType(numberValue: Number(-5))
 
         #expect(result == nil)
     }
 
     @Test
-    func test_initValidValue() {
+    func initValidValue() {
         let result = TestNumberType(numberValue: Number(10))
 
         #expect(result != nil)
@@ -74,34 +74,17 @@ extension NumberRepresentableTests {
     }
 
     @Test
-    func test_intValue() {
+    func intValue() {
         let value: TestNumberType = 42
 
         #expect(value.intValue == 42)
     }
 
     @Test
-    func test_isValid() {
+    func isValid() {
         #expect(TestNumberType.isValid(Number(0)))
         #expect(TestNumberType.isValid(Number(5)))
         #expect(!TestNumberType.isValid(Number(-1)))
         #expect(!TestNumberType.isValid(Number(numerator: 3, denominator: 4)))
     }
-}
-
-// MARK: - Test Helpers
-
-private struct TestNumberType: NumberRepresentable {
-    static func isValid(_ numberValue: Number) -> Bool {
-        numberValue.isInteger && !numberValue.isNegative
-    }
-
-    init?(numberValue: Number) {
-        guard Self.isValid(numberValue)
-        else { return nil }
-
-        self.numberValue = numberValue
-    }
-
-    let numberValue: Number
 }

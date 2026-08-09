@@ -11,7 +11,7 @@ struct ComplexTests {
 
 extension ComplexTests {
     @Test
-    func test_adding() {
+    func adding() {
         #expect(cx(-1, -2).adding(cx(-3, 4)).testEqual(to: cx(-4, 2)))
         #expect(cx(0, 5).adding(cx(0, 3)).testEqual(to: cx(0, 8)))
         #expect(cx(1_000, 2_000).adding(cx(5_000, -1_000)).testEqual(to: cx(6_000, 1_000)))
@@ -25,7 +25,7 @@ extension ComplexTests {
     }
 
     @Test
-    func test_angle() {
+    func angle() {
         let c1 = cx(1, 0)
 
         #expect(c1.angle.floatingPointValue.doubleValue == 0.0)
@@ -42,7 +42,7 @@ extension ComplexTests {
     }
 
     @Test
-    func test_conjugate() {
+    func conjugate() {
         #expect(cx(3, 4).conjugate.testEqual(to: cx(3, -4)))
         #expect(cx(3, -4).conjugate.testEqual(to: cx(3, 4)))
         #expect(cx(0, 0).conjugate.testEqual(to: cx(0, 0)))
@@ -50,21 +50,21 @@ extension ComplexTests {
     }
 
     @Test
-    func test_cosine() {
+    func cosine() {
         #expect(cx(0.0, 0.0).cosine().testEqual(to: cx(1.0, 0.0)))
         #expect(cx(Double.pi, 0.0).cosine().testEqual(to: cx(-1.0, 0.0)))
         #expect(cx(1.0, 1.0).cosine().testEqual(to: cx(0.8337300251311491, -0.9888977057628651)))
     }
 
     @Test
-    func test_debugDescription() {
+    func debugDescription() {
         #expect(cx(3, 4).debugDescription == "complex<small<3>, small<4>>")
         #expect(cx(-1, 2).debugDescription == "complex<small<-1>, small<2>>")
         #expect(cx(0, 0).debugDescription == "complex<small<0>, small<0>>")
     }
 
     @Test
-    func test_description() {
+    func description() {
         #expect(cx(3, 4).description == "3+4i")
         #expect(cx(3, -4).description == "3-4i")
         #expect(cx(0, 0).description == "0+0i")
@@ -72,7 +72,7 @@ extension ComplexTests {
     }
 
     @Test
-    func test_divided_by() {
+    func divided_by() {
         #expect(cx(-2, 5).divided(by: cx(1, 3)).testEqual(to: cx(fr(13, 10), fr(11, 10))))
         #expect(cx(0, 1).divided(by: cx(1, 0)).testEqual(to: cx(0, 1)))
         #expect(cx(0, 4).divided(by: cx(2, 0)).testEqual(to: cx(0, 2)))
@@ -86,7 +86,7 @@ extension ComplexTests {
     }
 
     @Test
-    func test_exact() {
+    func exact() {
         let c1 = cx(1.5, 2.5).exact
 
         #expect(c1.isExact)
@@ -98,14 +98,14 @@ extension ComplexTests {
     }
 
     @Test
-    func test_exponential() {
+    func exponential() {
         #expect(cx(0.0, 0.0).exponential().testEqual(to: cx(1.0, 0.0)))
         #expect(cx(1.0, 0.0).exponential().testEqual(to: cx(2.718281828459045, 0.0)))
         #expect(cx(1.0, 1.0).exponential().testEqual(to: cx(1.4686939399158851, 2.2873552871788423)))
     }
 
     @Test
-    func test_fromPolar_magnitude_angle() {
+    func fromPolar_magnitude_angle() {
         let c1 = Complex.fromPolar(magnitude: Real(1), angle: Real(0.0))
 
         #expect(c1.testEqual(to: cx(1.0, 0.0)))
@@ -125,32 +125,32 @@ extension ComplexTests {
     }
 
     @Test
-    func test_hyperbolicCosine() {
+    func hyperbolicCosine() {
         #expect(cx(0.0, 0.0).hyperbolicCosine().testEqual(to: cx(1.0, 0.0)))
         #expect(cx(1.0, 0.0).hyperbolicCosine().testEqual(to: cx(1.5430806348152437, 0.0)))
     }
 
     @Test
-    func test_hyperbolicSine() {
+    func hyperbolicSine() {
         #expect(cx(0.0, 0.0).hyperbolicSine().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(1.0, 0.0).hyperbolicSine().testEqual(to: cx(1.1752011936438014, 0.0)))
     }
 
     @Test
-    func test_hyperbolicTangent() {
+    func hyperbolicTangent() {
         #expect(cx(0.0, 0.0).hyperbolicTangent().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(1.0, 0.0).hyperbolicTangent().testEqual(to: cx(0.7615941559557649, 0.0)))
     }
 
     @Test
-    func test_imaginary() {
+    func imaginary() {
         #expect(cx(3, 4).imaginaryPart.isEqual(to: Real(4)))
         #expect(cx(0, -5).imaginaryPart.isEqual(to: Real(-5)))
         #expect(cx(3, 0).imaginaryPart.isEqual(to: Real(0)))
     }
 
     @Test
-    func test_init_real_imaginary() {
+    func init_real_imaginary() {
         let c1 = Complex(realPart: Real(3), imaginaryPart: Real(4))
 
         #expect(c1.realPart.isEqual(to: Real(3)))
@@ -166,43 +166,43 @@ extension ComplexTests {
     }
 
     @Test
-    func test_inverseCosine() {
+    func inverseCosine() {
         #expect(cx(1.0, 0.0).inverseCosine().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(0.0, 0.0).inverseCosine().testEqual(to: cx(1.5707963267948966, 0.0)))
     }
 
     @Test
-    func test_inverseHyperbolicCosine() {
+    func inverseHyperbolicCosine() {
         #expect(cx(1.0, 0.0).inverseHyperbolicCosine().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(2.0, 0.0).inverseHyperbolicCosine().testEqual(to: cx(1.3169578969248166, 0.0)))
     }
 
     @Test
-    func test_inverseHyperbolicSine() {
+    func inverseHyperbolicSine() {
         #expect(cx(0.0, 0.0).inverseHyperbolicSine().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(1.0, 0.0).inverseHyperbolicSine().testEqual(to: cx(0.881373587019543, 0.0)))
     }
 
     @Test
-    func test_inverseHyperbolicTangent() {
+    func inverseHyperbolicTangent() {
         #expect(cx(0.0, 0.0).inverseHyperbolicTangent().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(0.5, 0.0).inverseHyperbolicTangent().testEqual(to: cx(0.5493061443340549, 0.0)))
     }
 
     @Test
-    func test_inverseSine() {
+    func inverseSine() {
         #expect(cx(0.0, 0.0).inverseSine().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(1.0, 0.0).inverseSine().testEqual(to: cx(1.5707963267948966, 0.0)))
     }
 
     @Test
-    func test_inverseTangent() {
+    func inverseTangent() {
         #expect(cx(0.0, 0.0).inverseTangent().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(1.0, 0.0).inverseTangent().testEqual(to: cx(0.7853981633974483, 0.0)))
     }
 
     @Test
-    func test_isEqual_to() {
+    func isEqual_to() {
         #expect(cx(3, 4).isEqual(to: cx(3, 4)))
         #expect(!cx(3, 4).isEqual(to: cx(4, 3)))
         #expect(!cx(3, 4).isEqual(to: cx(3, -4)))
@@ -210,14 +210,14 @@ extension ComplexTests {
     }
 
     @Test
-    func test_isExact() {
+    func isExact() {
         #expect(cx(3, 4).isExact)
         #expect(cx(fr(1, 2), fr(3, 4)).isExact)
         #expect(!cx(1.5, 2.5).isExact)
     }
 
     @Test
-    func test_isFinite() {
+    func isFinite() {
         #expect(cx(3, 4).isFinite)
         #expect(cx(0, 0).isFinite)
         #expect(!cx(Double.infinity, 0.0).isFinite)
@@ -225,41 +225,41 @@ extension ComplexTests {
     }
 
     @Test
-    func test_isInexact() {
+    func isInexact() {
         #expect(cx(1.5, 2.5).isInexact)
         #expect(!cx(3, 4).isInexact)
     }
 
     @Test
-    func test_isInfinite() {
+    func isInfinite() {
         #expect(!cx(3, 4).isInfinite)
         #expect(cx(Double.infinity, 0.0).isInfinite)
         #expect(cx(0.0, Double.infinity).isInfinite)
     }
 
     @Test
-    func test_isInteger() {
+    func isInteger() {
         #expect(cx(3, 0).isInteger)
         #expect(!cx(3, 4).isInteger)
         #expect(!cx(fr(1, 2), fr(0, 1)).isInteger)
     }
 
     @Test
-    func test_isNaN() {
+    func isNaN() {
         #expect(!cx(3, 4).isNaN)
         #expect(cx(Double.nan, 0.0).isNaN)
         #expect(cx(0.0, Double.nan).isNaN)
     }
 
     @Test
-    func test_isRational() {
+    func isRational() {
         #expect(cx(3, 0).isRational)
         #expect(cx(fr(1, 2), fr(0, 1)).isRational)
         #expect(!cx(3, 4).isRational)
     }
 
     @Test
-    func test_isReal() {
+    func isReal() {
         #expect(cx(3, 0).isReal)
         #expect(cx(0, 0).isReal)
         #expect(!cx(3, 4).isReal)
@@ -267,7 +267,7 @@ extension ComplexTests {
     }
 
     @Test
-    func test_isZero() {
+    func isZero() {
         #expect(cx(0, 0).isZero)
         #expect(!cx(1, 0).isZero)
         #expect(!cx(0, 1).isZero)
@@ -275,14 +275,14 @@ extension ComplexTests {
     }
 
     @Test
-    func test_logarithm() {
+    func logarithm() {
         #expect(cx(1.0, 0.0).logarithm().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(2.718281828459045, 0.0).logarithm().testEqual(to: cx(1.0, 0.0)))
         #expect(cx(-1.0, 0.0).logarithm().testEqual(to: cx(0.0, Double.pi)))
     }
 
     @Test
-    func test_magnitude() {
+    func magnitude() {
         let c1 = cx(3, 4)
 
         #expect(c1.magnitude.floatingPointValue.doubleValue == 5.0)
@@ -297,7 +297,7 @@ extension ComplexTests {
     }
 
     @Test
-    func test_multiplied_by() {
+    func multiplied_by() {
         #expect(cx(-1, 2).multiplied(by: cx(2, -3)).testEqual(to: cx(4, 7)))
         #expect(cx(-3, 2).multiplied(by: cx(-3, -4)).testEqual(to: cx(17, 6)))
         #expect(cx(0, 1).multiplied(by: cx(0, 1)).testEqual(to: cx(-1, 0)))
@@ -311,7 +311,7 @@ extension ComplexTests {
     }
 
     @Test
-    func test_negated() {
+    func negated() {
         #expect(cx(3, 4).negated().testEqual(to: cx(-3, -4)))
         #expect(cx(-3, -4).negated().testEqual(to: cx(3, 4)))
         #expect(cx(0, 0).negated().testEqual(to: cx(0, 0)))
@@ -319,7 +319,7 @@ extension ComplexTests {
     }
 
     @Test
-    func test_parse_radix_exactness() {
+    func parse_radix_exactness() {
         let c1 = Complex.parse(input: "3+4i", radix: .decimal, exactness: .unspecified)
 
         #expect(c1?.testEqual(to: cx(3, 4)) == true)
@@ -336,28 +336,28 @@ extension ComplexTests {
     }
 
     @Test
-    func test_power() {
+    func power() {
         #expect(cx(2.0, 0.0).exponential(base: cx(3.0, 0.0)).testEqual(to: cx(9.0, 0.0)))
         #expect(cx(0.0, 0.0).exponential(base: cx(5.0, 0.0)).testEqual(to: cx(1.0, 0.0)))
         #expect(cx(1.0, 0.0).exponential(base: cx(7.0, 0.0)).testEqual(to: cx(7.0, 0.0)))
     }
 
     @Test
-    func test_real() {
+    func real() {
         #expect(cx(3, 4).realPart.isEqual(to: Real(3)))
         #expect(cx(-5, 2).realPart.isEqual(to: Real(-5)))
         #expect(cx(0, 7).realPart.isEqual(to: Real(0)))
     }
 
     @Test
-    func test_sine() {
+    func sine() {
         #expect(cx(0.0, 0.0).sine().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(Double.pi, 0.0).sine().testEqual(to: cx(1.2246467991473532e-16, 0.0)))
         #expect(cx(1.0, 1.0).sine().testEqual(to: cx(1.2984575814159773, 0.6349639147847361)))
     }
 
     @Test
-    func test_squareRoot() {
+    func squareRoot() {
         #expect(cx(-3, -4).squareRoot().testEqual(to: cx(1, -2)))
         #expect(cx(-9, 0).squareRoot().testEqual(to: cx(0, 3)))
         #expect(cx(0, -4).squareRoot().testEqual(to: cx(1.4142135623730951, -1.4142135623730949)))
@@ -371,7 +371,7 @@ extension ComplexTests {
     }
 
     @Test
-    func test_subtracting() {
+    func subtracting() {
         #expect(cx(-4, 2).subtracting(cx(-3, 4)).testEqual(to: cx(-1, -2)))
         #expect(cx(0, 0).subtracting(cx(-6, -2)).testEqual(to: cx(6, 2)))
         #expect(cx(0, 8).subtracting(cx(0, 3)).testEqual(to: cx(0, 5)))
@@ -385,7 +385,7 @@ extension ComplexTests {
     }
 
     @Test
-    func test_tangent() {
+    func tangent() {
         #expect(cx(0.0, 0.0).tangent().testEqual(to: cx(0.0, 0.0)))
         #expect(cx(1.0, 0.0).tangent().testEqual(to: cx(1.5574077246549023, 0.0)))
         #expect(cx(0.0, 1.0).tangent().testEqual(to: cx(0.0, 0.7615941559557649)))

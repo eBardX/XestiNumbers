@@ -11,7 +11,7 @@ struct NumberTests {
 
 extension NumberTests {
     @Test
-    func test_codable_roundTrip() throws {
+    func codable_roundTrip() throws {
         let original = Number(42)
         let data = try JSONEncoder().encode(original)
         let decoded = try JSONDecoder().decode(Number.self, from: data)
@@ -26,7 +26,7 @@ extension NumberTests {
     }
 
     @Test
-    func test_comparable() {
+    func comparable() {
         let a = Number(1)
         let b = Number(2)
         let c = Number(3)
@@ -41,7 +41,7 @@ extension NumberTests {
     }
 
     @Test
-    func test_debugDescription() {
+    func debugDescription() {
         let integer = Number(42)
 
         #expect(!integer.debugDescription.isEmpty)
@@ -52,7 +52,7 @@ extension NumberTests {
     }
 
     @Test
-    func test_description() {
+    func description() {
         let integer = Number(42)
 
         #expect(integer.description == "42")
@@ -71,7 +71,7 @@ extension NumberTests {
     }
 
     @Test
-    func test_equality_exactIntegers() {
+    func equality_exactIntegers() {
         let a = Number(42)
         let b = Number(42)
         let c = Number(99)
@@ -81,7 +81,7 @@ extension NumberTests {
     }
 
     @Test
-    func test_equality_mixedTypes() {
+    func equality_mixedTypes() {
         let real = Number(5)
         let complex = Number(realPart: Number(5), imaginaryPart: Number(0))
 
@@ -89,7 +89,7 @@ extension NumberTests {
     }
 
     @Test
-    func test_expressibleByFloatLiteral() {
+    func expressibleByFloatLiteral() {
         let n: Number = 3.14
 
         #expect(!n.isExact)
@@ -97,7 +97,7 @@ extension NumberTests {
     }
 
     @Test
-    func test_expressibleByIntegerLiteral() {
+    func expressibleByIntegerLiteral() {
         let n: Number = 42
 
         #expect(n.isExact)
@@ -105,14 +105,14 @@ extension NumberTests {
     }
 
     @Test
-    func test_expressibleByStringLiteral() {
+    func expressibleByStringLiteral() {
         let n: Number = "3/4"
 
         #expect(n == Number(numerator: 3, denominator: 4))
     }
 
     @Test
-    func test_hashable() {
+    func hashable() {
         let a = Number(42)
         let b = Number(42)
 

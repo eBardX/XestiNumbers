@@ -10,7 +10,7 @@ struct NumberOpsTests {
 
 extension NumberOpsTests {
     @Test
-    func test_addition() {
+    func addition() {
         #expect(Number(2) + Number(3) == Number(5))
         #expect(Number(-1) + Number(1) == Number(0))
         #expect(Number(0) + Number(0) == Number(0))
@@ -25,7 +25,7 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_addition_assignment() {
+    func addition_assignment() {
         var n = Number(10)
 
         n += Number(5)
@@ -34,13 +34,13 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_bitwiseAnd() {
+    func bitwiseAnd() {
         #expect((Number(0b1100) & Number(0b1010)) == Number(0b1000))
         #expect((Number(0xff) & Number(0x0f)) == Number(0x0f))
     }
 
     @Test
-    func test_bitwiseAnd_assignment() {
+    func bitwiseAnd_assignment() {
         var n = Number(0b1100)
 
         n &= Number(0b1010)
@@ -49,7 +49,7 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_bitwiseNot() {
+    func bitwiseNot() {
         let n = Number(0)
 
         #expect(~n == Number(-1))
@@ -60,13 +60,13 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_bitwiseOr() {
+    func bitwiseOr() {
         #expect((Number(0b1100) | Number(0b1010)) == Number(0b1110))
         #expect((Number(0) | Number(0xff)) == Number(0xff))
     }
 
     @Test
-    func test_bitwiseOr_assignment() {
+    func bitwiseOr_assignment() {
         var n = Number(0b1100)
 
         n |= Number(0b1010)
@@ -75,13 +75,13 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_bitwiseXor() {
+    func bitwiseXor() {
         #expect((Number(0b1100) ^ Number(0b1010)) == Number(0b0110))
         #expect((Number(0xff) ^ Number(0xff)) == Number(0))
     }
 
     @Test
-    func test_bitwiseXor_assignment() {
+    func bitwiseXor_assignment() {
         var n = Number(0b1100)
 
         n ^= Number(0b1010)
@@ -90,7 +90,7 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_division() {
+    func division() {
         #expect(Number(10) / Number(2) == Number(5))
         #expect(Number(7) / Number(2) == Number(numerator: 7, denominator: 2))
 
@@ -100,7 +100,7 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_division_assignment() {
+    func division_assignment() {
         var n = Number(10)
 
         n /= Number(2)
@@ -109,7 +109,7 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_multiplication() {
+    func multiplication() {
         #expect(Number(3) * Number(4) == Number(12))
         #expect(Number(-2) * Number(3) == Number(-6))
         #expect(Number(0) * Number(100) == Number(0))
@@ -120,7 +120,7 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_multiplication_assignment() {
+    func multiplication_assignment() {
         var n = Number(3)
 
         n *= Number(4)
@@ -129,7 +129,7 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_negation() {
+    func negation() {
         #expect(-Number(5) == Number(-5))
         #expect(-Number(-3) == Number(3))
         #expect(-Number(0) == Number(0))
@@ -140,13 +140,13 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_shiftLeft() {
+    func shiftLeft() {
         #expect((Number(1) << 3) == Number(8))
         #expect((Number(5) << 1) == Number(10))
     }
 
     @Test
-    func test_shiftLeft_assignment() {
+    func shiftLeft_assignment() {
         var n = Number(1)
 
         n <<= 4
@@ -155,13 +155,13 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_shiftRight() {
+    func shiftRight() {
         #expect((Number(8) >> 3) == Number(1))
         #expect((Number(16) >> 2) == Number(4))
     }
 
     @Test
-    func test_shiftRight_assignment() {
+    func shiftRight_assignment() {
         var n = Number(16)
 
         n >>= 2
@@ -170,7 +170,7 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_subtraction() {
+    func subtraction() {
         #expect(Number(5) - Number(3) == Number(2))
         #expect(Number(3) - Number(5) == Number(-2))
         #expect(Number(0) - Number(0) == Number(0))
@@ -181,7 +181,7 @@ extension NumberOpsTests {
     }
 
     @Test
-    func test_subtraction_assignment() {
+    func subtraction_assignment() {
         var n = Number(10)
 
         n -= Number(3)

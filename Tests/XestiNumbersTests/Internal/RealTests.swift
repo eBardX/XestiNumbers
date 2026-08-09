@@ -13,7 +13,7 @@ struct RealTests {
 
 extension RealTests {
     @Test
-    func test_absoluteValue() {
+    func absoluteValue() {
         #expect(rei(-5).absoluteValue().isEqual(to: rei(5)))
         #expect(rei(5).absoluteValue().isEqual(to: rei(5)))
         #expect(rei(0).absoluteValue().isEqual(to: rei(0)))
@@ -24,7 +24,7 @@ extension RealTests {
     }
 
     @Test
-    func test_adding() {
+    func adding() {
         #expect(rei(3).adding(rei(4)).isEqual(to: rei(7)))
         #expect(rfp(1.5).adding(rfp(2.5)).isEqual(to: rfp(4.0)))
         #expect(rfr(1, 4).adding(rfr(1, 4)).isEqual(to: rfr(1, 2)))
@@ -33,7 +33,7 @@ extension RealTests {
     }
 
     @Test
-    func test_angle() {
+    func angle() {
         #expect(rei(5).angle.isEqual(to: .exactZero))
         #expect(rei(-3).angle.isEqual(to: .pi))
         #expect(rfp(2.0).angle.isEqual(to: .inexactZero))
@@ -43,7 +43,7 @@ extension RealTests {
     }
 
     @Test
-    func test_bitwiseAnd_with() {
+    func bitwiseAnd_with() {
         #expect(rei(12).bitwiseAnd(with: rei(10)).isEqual(to: rei(8)))
         #expect(rei(0xff).bitwiseAnd(with: rei(0x0f)).isEqual(to: rei(0x0f)))
         #expect(rei(0).bitwiseAnd(with: rei(0xff)).isEqual(to: rei(0)))
@@ -51,7 +51,7 @@ extension RealTests {
     }
 
     @Test
-    func test_bitwiseNot() {
+    func bitwiseNot() {
         #expect(rei(0).bitwiseNot().isEqual(to: rei(-1)))
         #expect(rei(-1).bitwiseNot().isEqual(to: rei(0)))
         #expect(rei(5).bitwiseNot().isEqual(to: rei(-6)))
@@ -59,35 +59,35 @@ extension RealTests {
     }
 
     @Test
-    func test_bitwiseOr_with() {
+    func bitwiseOr_with() {
         #expect(rei(12).bitwiseOr(with: rei(10)).isEqual(to: rei(14)))
         #expect(rei(0).bitwiseOr(with: rei(0xff)).isEqual(to: rei(0xff)))
         #expect(rfp(12.0).bitwiseOr(with: rfp(10.0)).isEqual(to: rfp(14.0)))
     }
 
     @Test
-    func test_bitwiseShiftLeft_bits() {
+    func bitwiseShiftLeft_bits() {
         #expect(rei(1).bitwiseShiftLeft(bits: 3).isEqual(to: rei(8)))
         #expect(rei(5).bitwiseShiftLeft(bits: 1).isEqual(to: rei(10)))
         #expect(rfp(1.0).bitwiseShiftLeft(bits: 3).isEqual(to: rfp(8.0)))
     }
 
     @Test
-    func test_bitwiseShiftRight_bits() {
+    func bitwiseShiftRight_bits() {
         #expect(rei(8).bitwiseShiftRight(bits: 3).isEqual(to: rei(1)))
         #expect(rei(10).bitwiseShiftRight(bits: 1).isEqual(to: rei(5)))
         #expect(rfp(8.0).bitwiseShiftRight(bits: 3).isEqual(to: rfp(1.0)))
     }
 
     @Test
-    func test_bitwiseXor_with() {
+    func bitwiseXor_with() {
         #expect(rei(12).bitwiseXor(with: rei(10)).isEqual(to: rei(6)))
         #expect(rei(0xff).bitwiseXor(with: rei(0xff)).isEqual(to: rei(0)))
         #expect(rfp(12.0).bitwiseXor(with: rfp(10.0)).isEqual(to: rfp(6.0)))
     }
 
     @Test
-    func test_ceiling() {
+    func ceiling() {
         #expect(rei(3).ceiling().isEqual(to: rei(3)))
         #expect(rfp(3.2).ceiling().isEqual(to: rfp(4.0)))
         #expect(rfp(-3.2).ceiling().isEqual(to: rfp(-3.0)))
@@ -97,7 +97,7 @@ extension RealTests {
     }
 
     @Test
-    func test_compare_to() {
+    func compare_to() {
         #expect(rei(3).isLess(than: rei(5)))
         #expect(!rei(5).isLess(than: rei(3)))
         #expect(!rei(3).isLess(than: rei(3)))
@@ -110,14 +110,14 @@ extension RealTests {
     }
 
     @Test
-    func test_cosine() {
+    func cosine() {
         #expect(rei(0).cosine().isEqual(to: rfp(1.0)))
         #expect(rfp(0.0).cosine().isEqual(to: rfp(1.0)))
         #expect(rfr(0, 1).cosine().isEqual(to: rfp(1.0)))
     }
 
     @Test
-    func test_debugDescription() {
+    func debugDescription() {
         #expect(rei(42).debugDescription == "small<42>")
         #expect(rfp(3.14).debugDescription == "floatingPoint<3.14>")
         #expect(rfr(3, 4).debugDescription == "fraction<small<3>, small<4>>")
@@ -128,7 +128,7 @@ extension RealTests {
     }
 
     @Test
-    func test_denominator() {
+    func denominator() {
         #expect(rei(42).denominator.isEqual(to: .exactOne))
         #expect(rfp(5.0).denominator.isEqual(to: .inexactOne))
         #expect(rfr(3, 4).denominator.isEqual(to: rei(4)))
@@ -136,7 +136,7 @@ extension RealTests {
     }
 
     @Test
-    func test_description() {
+    func description() {
         #expect(rei(42).description == "42")
         #expect(rei(-7).description == "-7")
         #expect(rfp(3.14).description == "3.14")
@@ -148,7 +148,7 @@ extension RealTests {
     }
 
     @Test
-    func test_divided_by() {
+    func divided_by() {
         #expect(rei(10).divided(by: rei(2)).isEqual(to: rei(5)))
         #expect(rei(10).divided(by: rei(3)).isEqual(to: rfr(10, 3)))
         #expect(rfp(10.0).divided(by: rfp(2.0)).isEqual(to: rfp(5.0)))
@@ -156,7 +156,7 @@ extension RealTests {
     }
 
     @Test
-    func test_exact() {
+    func exact() {
         #expect(Real.inexactOne.exact.isEqual(to: .exactOne))
         #expect(Real.pi.exact.isEqual(to: rfr(355, 113)))
         #expect(Real.inexactZero.exact.isEqual(to: .exactZero))
@@ -171,7 +171,7 @@ extension RealTests {
     }
 
     @Test
-    func test_exactIntegerValue() {
+    func exactIntegerValue() {
         #expect(rei(42).exactIntegerValue.intValue == 42)
         #expect(rei(-7).exactIntegerValue.intValue == -7)
         #expect(rfp(7.0).exactIntegerValue.intValue == 7)
@@ -179,42 +179,42 @@ extension RealTests {
     }
 
     @Test
-    func test_exponential() {
+    func exponential() {
         #expect(rei(0).exponential().isEqual(to: rfp(1.0)))
         #expect(rfp(0.0).exponential().isEqual(to: rfp(1.0)))
         #expect(rfr(0, 1).exponential().isEqual(to: rfp(1.0)))
     }
 
     @Test
-    func test_exponentialBase10() {
+    func exponentialBase10() {
         #expect(rei(0).exponentialBase10().isEqual(to: rfp(1.0)))
         #expect(rei(2).exponentialBase10().isEqual(to: rfp(100.0)))
         #expect(rfp(0.0).exponentialBase10().isEqual(to: rfp(1.0)))
     }
 
     @Test
-    func test_exponentialBase2() {
+    func exponentialBase2() {
         #expect(rei(0).exponentialBase2().isEqual(to: rfp(1.0)))
         #expect(rei(3).exponentialBase2().isEqual(to: rfp(8.0)))
         #expect(rfp(0.0).exponentialBase2().isEqual(to: rfp(1.0)))
     }
 
     @Test
-    func test_exponential_base() {
+    func exponential_base() {
         #expect(rei(0).exponential(base: rei(2)).isEqual(to: rfp(1.0)))
         #expect(rfp(0.0).exponential(base: rfp(10.0)).isEqual(to: rfp(1.0)))
         #expect(rfr(0, 1).exponential(base: rei(5)).isEqual(to: rfp(1.0)))
     }
 
     @Test
-    func test_floatingPointValue() {
+    func floatingPointValue() {
         #expect(rei(42).floatingPointValue.doubleValue == 42.0)
         #expect(rfp(3.14).floatingPointValue.doubleValue == 3.14)
         #expect(rfr(1, 2).floatingPointValue.doubleValue == 0.5)
     }
 
     @Test
-    func test_floor() {
+    func floor() {
         #expect(rei(3).floor().isEqual(to: rei(3)))
         #expect(rfp(3.7).floor().isEqual(to: rfp(3.0)))
         #expect(rfp(-3.7).floor().isEqual(to: rfp(-4.0)))
@@ -224,7 +224,7 @@ extension RealTests {
     }
 
     @Test
-    func test_greatestCommonDivisor_with() {
+    func greatestCommonDivisor_with() {
         #expect(rei(12).greatestCommonDivisor(with: rei(8)).isEqual(to: rei(4)))
         #expect(rei(7).greatestCommonDivisor(with: rei(5)).isEqual(to: rei(1)))
         #expect(rei(0).greatestCommonDivisor(with: rei(5)).isEqual(to: rei(5)))
@@ -232,32 +232,32 @@ extension RealTests {
     }
 
     @Test
-    func test_hyperbolicCosine() {
+    func hyperbolicCosine() {
         #expect(rei(0).hyperbolicCosine().isEqual(to: rfp(1.0)))
         #expect(rfp(0.0).hyperbolicCosine().isEqual(to: rfp(1.0)))
     }
 
     @Test
-    func test_hyperbolicSine() {
+    func hyperbolicSine() {
         #expect(rei(0).hyperbolicSine().isEqual(to: rfp(0.0)))
         #expect(rfp(0.0).hyperbolicSine().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_hyperbolicTangent() {
+    func hyperbolicTangent() {
         #expect(rei(0).hyperbolicTangent().isEqual(to: rfp(0.0)))
         #expect(rfp(0.0).hyperbolicTangent().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_hypotenuse_with() {
+    func hypotenuse_with() {
         #expect(rei(3).hypotenuse(with: rei(4)).isEqual(to: rfp(5.0)))
         #expect(rfp(3.0).hypotenuse(with: rfp(4.0)).isEqual(to: rfp(5.0)))
         #expect(rei(0).hypotenuse(with: rei(5)).isEqual(to: rfp(5.0)))
     }
 
     @Test
-    func test_inexact() {
+    func inexact() {
         #expect(rei(42).inexact.isInexact)
         #expect(rei(42).inexact.isEqual(to: rfp(42.0)))
         #expect(rfp(3.14).inexact.isEqual(to: rfp(3.14)))
@@ -266,7 +266,7 @@ extension RealTests {
     }
 
     @Test
-    func test_init_binaryFloatingPoint() {
+    func init_binaryFloatingPoint() {
         let r1 = Real(3.14)
         #expect(r1.isInexact)
         #expect(r1.isEqual(to: rfp(3.14)))
@@ -281,7 +281,7 @@ extension RealTests {
     }
 
     @Test
-    func test_init_binaryInteger() {
+    func init_binaryInteger() {
         let r1 = Real(42)
         #expect(r1.isExact)
         #expect(r1.isEqual(to: rei(42)))
@@ -296,49 +296,49 @@ extension RealTests {
     }
 
     @Test
-    func test_inverseCosine() {
+    func inverseCosine() {
         #expect(rei(1).inverseCosine().isEqual(to: rfp(0.0)))
         #expect(rfp(1.0).inverseCosine().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_inverseHyperbolicCosine() {
+    func inverseHyperbolicCosine() {
         #expect(rei(1).inverseHyperbolicCosine().isEqual(to: rfp(0.0)))
         #expect(rfp(1.0).inverseHyperbolicCosine().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_inverseHyperbolicSine() {
+    func inverseHyperbolicSine() {
         #expect(rei(0).inverseHyperbolicSine().isEqual(to: rfp(0.0)))
         #expect(rfp(0.0).inverseHyperbolicSine().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_inverseHyperbolicTangent() {
+    func inverseHyperbolicTangent() {
         #expect(rei(0).inverseHyperbolicTangent().isEqual(to: rfp(0.0)))
         #expect(rfp(0.0).inverseHyperbolicTangent().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_inverseSine() {
+    func inverseSine() {
         #expect(rei(0).inverseSine().isEqual(to: rfp(0.0)))
         #expect(rfp(0.0).inverseSine().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_inverseTangent() {
+    func inverseTangent() {
         #expect(rei(0).inverseTangent().isEqual(to: rfp(0.0)))
         #expect(rfp(0.0).inverseTangent().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_inverseTangent2() {
+    func inverseTangent2() {
         #expect(rei(0).inverseTangent(rei(1)).isEqual(to: rfp(0.0)))
         #expect(rfp(0.0).inverseTangent(rfp(1.0)).isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_isEqual_to() {
+    func isEqual_to() {
         #expect(rei(42).isEqual(to: rei(42)))
         #expect(!rei(42).isEqual(to: rei(43)))
         #expect(rfp(3.14).isEqual(to: rfp(3.14)))
@@ -350,7 +350,7 @@ extension RealTests {
     }
 
     @Test
-    func test_isEven() {
+    func isEven() {
         #expect(rei(4).isEven)
         #expect(!rei(3).isEven)
         #expect(rei(0).isEven)
@@ -361,14 +361,14 @@ extension RealTests {
     }
 
     @Test
-    func test_isExact() {
+    func isExact() {
         #expect(rei(42).isExact)
         #expect(!rfp(3.14).isExact)
         #expect(rfr(3, 4).isExact)
     }
 
     @Test
-    func test_isFinite() {
+    func isFinite() {
         #expect(rei(42).isFinite)
         #expect(rfp(3.14).isFinite)
         #expect(rfr(3, 4).isFinite)
@@ -378,14 +378,14 @@ extension RealTests {
     }
 
     @Test
-    func test_isInexact() {
+    func isInexact() {
         #expect(!rei(42).isInexact)
         #expect(rfp(3.14).isInexact)
         #expect(!rfr(3, 4).isInexact)
     }
 
     @Test
-    func test_isInfinite() {
+    func isInfinite() {
         #expect(!rei(42).isInfinite)
         #expect(!rfp(3.14).isInfinite)
         #expect(!rfr(3, 4).isInfinite)
@@ -394,7 +394,7 @@ extension RealTests {
     }
 
     @Test
-    func test_isInteger() {
+    func isInteger() {
         #expect(rei(42).isInteger)
         #expect(rfp(3.0).isInteger)
         #expect(!rfp(3.14).isInteger)
@@ -403,7 +403,7 @@ extension RealTests {
     }
 
     @Test
-    func test_isNaN() {
+    func isNaN() {
         #expect(Real.nan.isNaN)
         #expect(!rei(0).isNaN)
         #expect(!rfp(1.0).isNaN)
@@ -411,7 +411,7 @@ extension RealTests {
     }
 
     @Test
-    func test_isNegative() {
+    func isNegative() {
         #expect(rei(-3).isNegative)
         #expect(!rei(3).isNegative)
         #expect(!rei(0).isNegative)
@@ -422,7 +422,7 @@ extension RealTests {
     }
 
     @Test
-    func test_isOdd() {
+    func isOdd() {
         #expect(rei(3).isOdd)
         #expect(!rei(4).isOdd)
         #expect(rfp(3.0).isOdd)
@@ -432,7 +432,7 @@ extension RealTests {
     }
 
     @Test
-    func test_isPositive() {
+    func isPositive() {
         #expect(rei(3).isPositive)
         #expect(!rei(-3).isPositive)
         #expect(!rei(0).isPositive)
@@ -443,7 +443,7 @@ extension RealTests {
     }
 
     @Test
-    func test_isRational() {
+    func isRational() {
         #expect(rei(42).isRational)
         #expect(rfp(3.14).isRational)
         #expect(rfr(3, 4).isRational)
@@ -453,7 +453,7 @@ extension RealTests {
     }
 
     @Test
-    func test_isZero() {
+    func isZero() {
         #expect(rei(0).isZero)
         #expect(!rei(42).isZero)
         #expect(Real.inexactZero.isZero)
@@ -463,40 +463,40 @@ extension RealTests {
     }
 
     @Test
-    func test_leastCommonMultiple_with() {
+    func leastCommonMultiple_with() {
         #expect(rei(4).leastCommonMultiple(with: rei(6)).isEqual(to: rei(12)))
         #expect(rei(3).leastCommonMultiple(with: rei(5)).isEqual(to: rei(15)))
         #expect(rfp(4.0).leastCommonMultiple(with: rfp(6.0)).isEqual(to: rfp(12.0)))
     }
 
     @Test
-    func test_logarithm() {
+    func logarithm() {
         #expect(rei(1).logarithm().isEqual(to: rfp(0.0)))
         #expect(rfp(1.0).logarithm().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_logarithmBase10() {
+    func logarithmBase10() {
         #expect(rei(1).logarithmBase10().isEqual(to: rfp(0.0)))
         #expect(rei(100).logarithmBase10().isEqual(to: rfp(2.0)))
         #expect(rfp(1.0).logarithmBase10().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_logarithmBase2() {
+    func logarithmBase2() {
         #expect(rei(1).logarithmBase2().isEqual(to: rfp(0.0)))
         #expect(rei(8).logarithmBase2().isEqual(to: rfp(3.0)))
         #expect(rfp(1.0).logarithmBase2().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_logarithm_base() {
+    func logarithm_base() {
         #expect(rei(1).logarithm(base: rei(10)).isEqual(to: rfp(0.0)))
         #expect(rfp(1.0).logarithm(base: rfp(10.0)).isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_modulo() {
+    func modulo() {
         #expect(rei(7).modulo(rei(3)).isEqual(to: rei(1)))
         #expect(rei(-7).modulo(rei(3)).isEqual(to: rei(2)))
         #expect(rei(0).modulo(rei(3)).isEqual(to: rei(0)))
@@ -504,7 +504,7 @@ extension RealTests {
     }
 
     @Test
-    func test_multiplied_by() {
+    func multiplied_by() {
         #expect(rei(3).multiplied(by: rei(4)).isEqual(to: rei(12)))
         #expect(rfp(2.5).multiplied(by: rfp(4.0)).isEqual(to: rfp(10.0)))
         #expect(rfr(2, 3).multiplied(by: rfr(3, 4)).isEqual(to: rfr(1, 2)))
@@ -512,7 +512,7 @@ extension RealTests {
     }
 
     @Test
-    func test_negated() {
+    func negated() {
         #expect(rei(5).negated().isEqual(to: rei(-5)))
         #expect(rei(-5).negated().isEqual(to: rei(5)))
         #expect(rei(0).negated().isEqual(to: rei(0)))
@@ -521,7 +521,7 @@ extension RealTests {
     }
 
     @Test
-    func test_numerator() {
+    func numerator() {
         #expect(rei(42).numerator.isEqual(to: rei(42)))
         #expect(rfp(7.0).numerator.isEqual(to: rfp(7.0)))
         #expect(rfr(3, 4).numerator.isEqual(to: rei(3)))
@@ -529,7 +529,7 @@ extension RealTests {
     }
 
     @Test
-    func test_parse_radix_exactness() {
+    func parse_radix_exactness() {
         #expect(Real.parse(input: "42", radix: .decimal, exactness: .unspecified)?.isEqual(to: rei(42)) == true)
         #expect(Real.parse(input: "42", radix: .decimal, exactness: .exact)?.isEqual(to: rei(42)) == true)
         #expect(Real.parse(input: "42", radix: .decimal, exactness: .inexact)?.isEqual(to: rfp(42.0)) == true)
@@ -546,21 +546,21 @@ extension RealTests {
     }
 
     @Test
-    func test_power() {
+    func power() {
         #expect(rei(0).exponential(base: rei(2)).isEqual(to: rfp(1.0)))
         #expect(rfp(0.0).exponential(base: rfp(5.0)).isEqual(to: rfp(1.0)))
         #expect(rfr(0, 1).exponential(base: rei(7)).isEqual(to: rfp(1.0)))
     }
 
     @Test
-    func test_quotient_dividingBy() {
+    func quotient_dividingBy() {
         #expect(rei(10).quotient(dividingBy: rei(3)).isEqual(to: rei(3)))
         #expect(rei(-10).quotient(dividingBy: rei(3)).isEqual(to: rei(-3)))
         #expect(rfp(10.0).quotient(dividingBy: rfp(3.0)).isEqual(to: rfp(3.0)))
     }
 
     @Test
-    func test_rationalize() {
+    func rationalize() {
         #expect(Real.pi.exact.rationalize(within: rfr(1, 10)).require().isEqual(to: rfr(16, 5)))
         #expect(Real.pi.exact.rationalize(within: rfr(1, 100)).require().isEqual(to: rfr(22, 7)))
         #expect(Real.pi.exact.rationalize(within: rfr(1, 1_000)).require().isEqual(to: rfr(201, 64)))
@@ -591,7 +591,7 @@ extension RealTests {
     }
 
     @Test
-    func test_remainder_dividingBy() {
+    func remainder_dividingBy() {
         #expect(rei(10).remainder(dividingBy: rei(3)).isEqual(to: rei(1)))
         #expect(rei(-10).remainder(dividingBy: rei(3)).isEqual(to: rei(-1)))
         #expect(rei(0).remainder(dividingBy: rei(3)).isEqual(to: rei(0)))
@@ -599,7 +599,7 @@ extension RealTests {
     }
 
     @Test
-    func test_round() {
+    func round() {
         #expect(rei(3).round().isEqual(to: rei(3)))
         #expect(rfp(3.7).round().isEqual(to: rfp(4.0)))
         #expect(rfp(3.2).round().isEqual(to: rfp(3.0)))
@@ -609,7 +609,7 @@ extension RealTests {
     }
 
     @Test
-    func test_simplified() {
+    func simplified() {
         #expect(rei(42).simplified.isEqual(to: rei(42)))
         #expect(rfp(3.14).simplified.isEqual(to: rfp(3.14)))
         #expect(rfr(6, 3).simplified.isEqual(to: rei(2)))
@@ -617,21 +617,21 @@ extension RealTests {
     }
 
     @Test
-    func test_sine() {
+    func sine() {
         #expect(rei(0).sine().isEqual(to: rfp(0.0)))
         #expect(rfp(0.0).sine().isEqual(to: rfp(0.0)))
         #expect(rfr(0, 1).sine().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_squareRoot() {
+    func squareRoot() {
         #expect(rei(4).squareRoot().isEqual(to: rfp(2.0)))
         #expect(rfp(9.0).squareRoot().isEqual(to: rfp(3.0)))
         #expect(rei(0).squareRoot().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_subtracting() {
+    func subtracting() {
         #expect(rei(7).subtracting(rei(3)).isEqual(to: rei(4)))
         #expect(rfp(5.5).subtracting(rfp(2.5)).isEqual(to: rfp(3.0)))
         #expect(rfr(3, 4).subtracting(rfr(1, 4)).isEqual(to: rfr(1, 2)))
@@ -639,14 +639,14 @@ extension RealTests {
     }
 
     @Test
-    func test_tangent() {
+    func tangent() {
         #expect(rei(0).tangent().isEqual(to: rfp(0.0)))
         #expect(rfp(0.0).tangent().isEqual(to: rfp(0.0)))
         #expect(rfr(0, 1).tangent().isEqual(to: rfp(0.0)))
     }
 
     @Test
-    func test_truncate() {
+    func truncate() {
         #expect(rei(3).truncate().isEqual(to: rei(3)))
         #expect(rfp(3.7).truncate().isEqual(to: rfp(3.0)))
         #expect(rfp(-3.7).truncate().isEqual(to: rfp(-3.0)))

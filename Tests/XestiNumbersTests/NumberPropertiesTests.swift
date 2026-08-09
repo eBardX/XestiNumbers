@@ -10,7 +10,7 @@ struct NumberPropertiesTests {
 
 extension NumberPropertiesTests {
     @Test
-    func test_angle() {
+    func angle() {
         let positive = Number(1)
 
         #expect(positive.angle == Number(0))
@@ -25,7 +25,7 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_denominator() {
+    func denominator() {
         let integer = Number(5)
 
         #expect(integer.denominator == Number(1))
@@ -36,7 +36,7 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_exact() {
+    func exact() {
         let inexact = Number(3.14)
 
         #expect(inexact.isInexact)
@@ -47,7 +47,7 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_imaginaryPart() {
+    func imaginaryPart() {
         let real = Number(5)
 
         #expect(real.imaginaryPart == Number(0))
@@ -58,7 +58,7 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_inexact() {
+    func inexact() {
         let exact = Number(42)
 
         #expect(exact.isExact)
@@ -70,27 +70,27 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_isComplex() {
+    func isComplex() {
         #expect(Number(42).isComplex)
         #expect(Number(3.14).isComplex)
         #expect(Number(realPart: Number(1), imaginaryPart: Number(2)).isComplex)
     }
 
     @Test
-    func test_isEven() {
+    func isEven() {
         #expect(Number(4).isEven)
         #expect(Number(0).isEven)
         #expect(!Number(3).isEven)
     }
 
     @Test
-    func test_isExact() {
+    func isExact() {
         #expect(Number(42).isExact)
         #expect(!Number(3.14).isExact)
     }
 
     @Test
-    func test_isFinite() {
+    func isFinite() {
         #expect(Number(42).isFinite)
         #expect(Number(3.14).isFinite)
         #expect(!Number.positiveInfinity.isFinite)
@@ -98,40 +98,40 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_isInexact() {
+    func isInexact() {
         #expect(!Number(42).isInexact)
         #expect(Number(3.14).isInexact)
     }
 
     @Test
-    func test_isInfinite() {
+    func isInfinite() {
         #expect(Number.positiveInfinity.isInfinite)
         #expect(Number.negativeInfinity.isInfinite)
         #expect(!Number(42).isInfinite)
     }
 
     @Test
-    func test_isInteger() {
+    func isInteger() {
         #expect(Number(42).isInteger)
         #expect(!Number(numerator: 3, denominator: 4).isInteger)
         #expect(!Number(3.14).isInteger)
     }
 
     @Test
-    func test_isNaN() {
+    func isNaN() {
         #expect(Number.nan.isNaN)
         #expect(!Number(42).isNaN)
     }
 
     @Test
-    func test_isNegative() {
+    func isNegative() {
         #expect(Number(-5).isNegative)
         #expect(!Number(5).isNegative)
         #expect(!Number(0).isNegative)
     }
 
     @Test
-    func test_isOdd() {
+    func isOdd() {
         #expect(Number(3).isOdd)
         #expect(Number(7).isOdd)
         #expect(!Number(4).isOdd)
@@ -139,14 +139,14 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_isPositive() {
+    func isPositive() {
         #expect(Number(5).isPositive)
         #expect(!Number(-5).isPositive)
         #expect(!Number(0).isPositive)
     }
 
     @Test
-    func test_isRational() {
+    func isRational() {
         #expect(Number(42).isRational)
         #expect(Number(numerator: 3, denominator: 4).isRational)
         #expect(!Number.nan.isRational)
@@ -154,7 +154,7 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_isReal() {
+    func isReal() {
         #expect(Number(42).isReal)
         #expect(Number(3.14).isReal)
 
@@ -164,14 +164,14 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_isZero() {
+    func isZero() {
         #expect(Number(0).isZero)
         #expect(!Number(1).isZero)
         #expect(!Number(-1).isZero)
     }
 
     @Test
-    func test_magnitude() {
+    func magnitude() {
         #expect(Number(5).magnitude == Number(5))
         #expect(Number(-5).magnitude == Number(5))
 
@@ -181,7 +181,7 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_numerator() {
+    func numerator() {
         let integer = Number(5)
 
         #expect(integer.numerator == Number(5))
@@ -192,7 +192,7 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_realPart() {
+    func realPart() {
         let real = Number(5)
 
         #expect(real.realPart == Number(5))
@@ -203,7 +203,7 @@ extension NumberPropertiesTests {
     }
 
     @Test
-    func test_simplified() {
+    func simplified() {
         let fraction = Number(numerator: 4, denominator: 4)
         let simplified = fraction.simplified
 

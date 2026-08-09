@@ -1,6 +1,6 @@
 // © 2025–2026 John Gary Pusey (see LICENSE.md)
 
-// MARK: - Public Functions
+// MARK: Public Functions
 
 /// Calculates the absolute value of the provided number and returns the result.
 ///
@@ -98,28 +98,6 @@ public func asinh(_ z: Number) -> Number {
     }
 }
 
-/// Calculates the inverse tangent of the provided number and returns the
-/// result.
-///
-/// The equivalent Scheme procedure is:
-///
-/// ```
-/// (atan z) ; R5RS and R7RS
-/// ```
-///
-/// - Parameter z:  The number for which to calculate the inverse tangent.
-///
-/// - Returns:  The result of the inverse tangent calculation.
-public func atan(_ z: Number) -> Number {
-    switch z.value {
-    case let .complex(val):
-        Number(.complex(val.inverseTangent()))
-
-    case let .real(val):
-        Number(.real(val.inverseTangent()))
-    }
-}
-
 /// Calculates the inverse tangent of the two provided numbers and returns the
 /// result.
 ///
@@ -141,6 +119,28 @@ public func atan(_ z: Number) -> Number {
 public func atan(_ y: Number,
                  _ x: Number) -> Number {
     Number(.real(y.checkReal().inverseTangent(x.checkReal())))
+}
+
+/// Calculates the inverse tangent of the provided number and returns the
+/// result.
+///
+/// The equivalent Scheme procedure is:
+///
+/// ```
+/// (atan z) ; R5RS and R7RS
+/// ```
+///
+/// - Parameter z:  The number for which to calculate the inverse tangent.
+///
+/// - Returns:  The result of the inverse tangent calculation.
+public func atan(_ z: Number) -> Number {
+    switch z.value {
+    case let .complex(val):
+        Number(.complex(val.inverseTangent()))
+
+    case let .real(val):
+        Number(.real(val.inverseTangent()))
+    }
 }
 
 /// Calculates the inverse hyperbolic tangent of the provided number and returns

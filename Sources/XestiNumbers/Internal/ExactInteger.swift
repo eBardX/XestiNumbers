@@ -6,13 +6,6 @@ private import XestiTools
 
 internal struct ExactInteger {
 
-    // MARK: Internal Nested Types
-
-    internal enum Value {
-        case large(BigInt)
-        case small(Int)
-    }
-
     // MARK: Internal Initializers
 
     internal init(_ value: Value) {

@@ -110,7 +110,7 @@ public protocol NumberRepresentable: Codable,
     var uintValue: UInt { get }
 }
 
-// MARK: - (defaults)
+// MARK: -
 
 extension NumberRepresentable {
 

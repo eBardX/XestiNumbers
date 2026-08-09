@@ -70,6 +70,20 @@ extension Number.FormatStyle: FormatStyle {
     /// Use this format style to change the decimal precision used by an
     /// existing number format style.
     ///
+    /// - Parameter limit:  The number of digits to use when formatting the part
+    ///                     of a number following the decimal separator.
+    ///
+    /// - Returns:  A number format style modified to use the provided decimal
+    ///             precision.
+    public func decimalPrecision(_ limit: Int) -> Self {
+        decimalPrecision(limit...limit)
+    }
+
+    /// Modifies this format style to use the provided decimal precision.
+    ///
+    /// Use this format style to change the decimal precision used by an
+    /// existing number format style.
+    ///
     /// - Parameter limits: A range from the minimum to the maximum number of
     ///                     digits to use when formatting the part of a number
     ///                     following the decimal separator.
@@ -87,20 +101,6 @@ extension Number.FormatStyle: FormatStyle {
         new.doubleFormatStyle = doubleFormatStyle.precision(.fractionLength(range))
 
         return new
-    }
-
-    /// Modifies this format style to use the provided decimal precision.
-    ///
-    /// Use this format style to change the decimal precision used by an
-    /// existing number format style.
-    ///
-    /// - Parameter limit:  The number of digits to use when formatting the part
-    ///                     of a number following the decimal separator.
-    ///
-    /// - Returns:  A number format style modified to use the provided decimal
-    ///             precision.
-    public func decimalPrecision(_ limit: Int) -> Self {
-        decimalPrecision(limit...limit)
     }
 
     /// Formats the provided number, using this style.

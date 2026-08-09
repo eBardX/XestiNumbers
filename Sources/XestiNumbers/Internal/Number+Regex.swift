@@ -225,6 +225,8 @@ extension Number {
 
     // MARK: Private Type Properties
 
+    private static let binDigit: CharacterClass = .anyOf("01")
+
     private nonisolated(unsafe) static let binReal = Regex {
         ChoiceOf {
             Regex {
@@ -240,6 +242,22 @@ extension Number {
         }
     }
 
+    private nonisolated(unsafe) static let binUInteger = Regex {
+        OneOrMore {
+            binDigit
+        }
+    }
+
+    private nonisolated(unsafe) static let binUReal = Regex {
+        binUInteger
+        Optionally {
+            "/"
+            binUInteger
+        }
+    }
+
+    private static let decDigit: CharacterClass = .anyOf("0123456789")
+
     private nonisolated(unsafe) static let decReal = Regex {
         ChoiceOf {
             Regex {
@@ -252,73 +270,6 @@ extension Number {
                 sign
                 special
             }
-        }
-    }
-
-    private nonisolated(unsafe) static let hexReal = Regex {
-        ChoiceOf {
-            Regex {
-                Optionally {
-                    sign
-                }
-                hexUReal
-            }
-            Regex {
-                sign
-                special
-            }
-        }
-    }
-
-    private nonisolated(unsafe) static let octReal = Regex {
-        ChoiceOf {
-            Regex {
-                Optionally {
-                    sign
-                }
-                octUReal
-            }
-            Regex {
-                sign
-                special
-            }
-        }
-    }
-
-    private nonisolated(unsafe) static let binUReal = Regex {
-        binUInteger
-        Optionally {
-            "/"
-            binUInteger
-        }
-    }
-
-    private nonisolated(unsafe) static let decUReal = Regex {
-        ChoiceOf {
-            Regex {
-                decUInteger
-                Optionally {
-                    "/"
-                    decUInteger
-                }
-            }
-            decUFloat
-        }
-    }
-
-    private nonisolated(unsafe) static let hexUReal = Regex {
-        hexUInteger
-        Optionally {
-            "/"
-            hexUInteger
-        }
-    }
-
-    private nonisolated(unsafe) static let octUReal = Regex {
-        octUInteger
-        Optionally {
-            "/"
-            octUInteger
         }
     }
 
@@ -357,15 +308,41 @@ extension Number {
         }
     }
 
-    private nonisolated(unsafe) static let binUInteger = Regex {
-        OneOrMore {
-            binDigit
-        }
-    }
-
     private nonisolated(unsafe) static let decUInteger = Regex {
         OneOrMore {
             decDigit
+        }
+    }
+
+    private nonisolated(unsafe) static let decUReal = Regex {
+        ChoiceOf {
+            Regex {
+                decUInteger
+                Optionally {
+                    "/"
+                    decUInteger
+                }
+            }
+            decUFloat
+        }
+    }
+
+    private static let exactness: CharacterClass = .anyOf("ei")
+
+    private static let hexDigit: CharacterClass = .anyOf("0123456789abcdef")
+
+    private nonisolated(unsafe) static let hexReal = Regex {
+        ChoiceOf {
+            Regex {
+                Optionally {
+                    sign
+                }
+                hexUReal
+            }
+            Regex {
+                sign
+                special
+            }
         }
     }
 
@@ -375,11 +352,48 @@ extension Number {
         }
     }
 
+    private nonisolated(unsafe) static let hexUReal = Regex {
+        hexUInteger
+        Optionally {
+            "/"
+            hexUInteger
+        }
+    }
+
+    private static let octDigit: CharacterClass = .anyOf("01234567")
+
+    private nonisolated(unsafe) static let octReal = Regex {
+        ChoiceOf {
+            Regex {
+                Optionally {
+                    sign
+                }
+                octUReal
+            }
+            Regex {
+                sign
+                special
+            }
+        }
+    }
+
     private nonisolated(unsafe) static let octUInteger = Regex {
         OneOrMore {
             octDigit
         }
     }
+
+    private nonisolated(unsafe) static let octUReal = Regex {
+        octUInteger
+        Optionally {
+            "/"
+            octUInteger
+        }
+    }
+
+    private static let radix: CharacterClass = .anyOf("bdox")
+
+    private static let sign: CharacterClass = .anyOf("+-")
 
     private nonisolated(unsafe) static let special = Regex {
         ChoiceOf {
@@ -388,12 +402,4 @@ extension Number {
         }
         ".0"
     }
-
-    private static let binDigit: CharacterClass  = .anyOf("01")
-    private static let decDigit: CharacterClass  = .anyOf("0123456789")
-    private static let exactness: CharacterClass = .anyOf("ei")
-    private static let hexDigit: CharacterClass  = .anyOf("0123456789abcdef")
-    private static let octDigit: CharacterClass  = .anyOf("01234567")
-    private static let radix: CharacterClass     = .anyOf("bdox")
-    private static let sign: CharacterClass      = .anyOf("+-")
 }

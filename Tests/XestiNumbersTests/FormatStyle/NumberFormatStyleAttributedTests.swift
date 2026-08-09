@@ -11,7 +11,7 @@ struct NumberFormatStyleAttributedTests {
 
 extension NumberFormatStyleAttributedTests {
     @Test
-    func test_format_complex() {
+    func format_complex() {
         let fs = Number.FormatStyle().decimalPrecision(1...3).attributed
 
         #expect(fs.format(ncx(123, 4_567)) ==
@@ -49,7 +49,7 @@ extension NumberFormatStyleAttributedTests {
     }
 
     @Test
-    func test_format_exactInteger() {
+    func format_exactInteger() {
         let fs = Number.FormatStyle().attributed
 
         #expect(fs.format(123) == "123")
@@ -63,7 +63,7 @@ extension NumberFormatStyleAttributedTests {
     }
 
     @Test
-    func test_format_floatingPoint() {
+    func format_floatingPoint() {
         let fs = Number.FormatStyle().decimalPrecision(1...3).attributed
 
         #expect(fs.format(123.0) ==
@@ -92,7 +92,7 @@ extension NumberFormatStyleAttributedTests {
     }
 
     @Test
-    func test_format_fraction_decimal() {
+    func format_fraction_decimal() {
         let fs = Number.FormatStyle().decimalPrecision(0...3).fractionDisplay(strategy: .decimal).attributed
 
         #expect(fs.format(nfr(123, 4_567)) ==
@@ -123,7 +123,7 @@ extension NumberFormatStyleAttributedTests {
     }
 
     @Test
-    func test_format_fraction_default() {
+    func format_fraction_default() {
         let fs = Number.FormatStyle().attributed    // == .fractionDisplay(strategy: .simple(alwaysShowDenominator: true))
 
         #expect(fs.format(nfr(123, 4_567)) ==
@@ -157,7 +157,7 @@ extension NumberFormatStyleAttributedTests {
     }
 
     @Test
-    func test_format_fraction_mixed_default() {
+    func format_fraction_mixed_default() {
         let fs = Number.FormatStyle().fractionDisplay(strategy: .mixed()).attributed    // == .mixed(alwaysShowInteger: false)
 
         #expect(fs.format(nfr(123, 4_567)) ==
@@ -196,7 +196,7 @@ extension NumberFormatStyleAttributedTests {
     }
 
     @Test
-    func test_format_fraction_mixed_true() {
+    func format_fraction_mixed_true() {
         let fs = Number.FormatStyle().fractionDisplay(strategy: .mixed(alwaysShowInteger: true)).attributed
 
         #expect(fs.format(nfr(123, 4_567)) ==
@@ -241,7 +241,7 @@ extension NumberFormatStyleAttributedTests {
     }
 
     @Test
-    func test_format_fraction_ratio() {
+    func format_fraction_ratio() {
         let fs = Number.FormatStyle().fractionDisplay(strategy: .ratio).attributed
 
         #expect(fs.format(nfr(123, 4_567)) ==
@@ -275,7 +275,7 @@ extension NumberFormatStyleAttributedTests {
     }
 
     @Test
-    func test_format_fraction_simple_false() {
+    func format_fraction_simple_false() {
         let fs = Number.FormatStyle().fractionDisplay(strategy: .simple(alwaysShowDenominator: false)).attributed
 
         #expect(fs.format(nfr(123, 4_567)) ==

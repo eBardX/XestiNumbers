@@ -6,25 +6,6 @@ private import XestiTools
 
 internal struct Real {
 
-    // MARK: Internal Nested Types
-
-    internal enum Value {
-        case exactInteger(ExactInteger)
-        case floatingPoint(FloatingPoint)
-        case fraction(Fraction)
-    }
-
-    // MARK: Internal Type Properties
-
-    internal static let exactOne         = Self(.exactInteger(.one))
-    internal static let exactZero        = Self(.exactInteger(.zero))
-    internal static let inexactOne       = Self(.floatingPoint(.one))
-    internal static let inexactZero      = Self(.floatingPoint(.zero))
-    internal static let nan              = Self(.floatingPoint(.nan))
-    internal static let negativeInfinity = Self(.floatingPoint(.negativeInfinity))
-    internal static let pi               = Self(.floatingPoint(.pi))
-    internal static let positiveInfinity = Self(.floatingPoint(.positiveInfinity))
-
     // MARK: Internal Initializers
 
     internal init(_ value: Value) {
@@ -36,7 +17,20 @@ internal struct Real {
     internal let value: Value
 }
 
+// MARK: -
+
 extension Real {
+
+    // MARK: Internal Type Properties
+
+    internal static let exactOne         = Self(.exactInteger(.one))
+    internal static let exactZero        = Self(.exactInteger(.zero))
+    internal static let inexactOne       = Self(.floatingPoint(.one))
+    internal static let inexactZero      = Self(.floatingPoint(.zero))
+    internal static let nan              = Self(.floatingPoint(.nan))
+    internal static let negativeInfinity = Self(.floatingPoint(.negativeInfinity))
+    internal static let pi               = Self(.floatingPoint(.pi))
+    internal static let positiveInfinity = Self(.floatingPoint(.positiveInfinity))
 
     // MARK: Internal Type Methods
 
@@ -855,22 +849,6 @@ extension Real {
 
     // MARK: Private Instance Methods
 
-    private func _toInteger() -> (value: ExactInteger, inexact: Bool) {
-        switch value {
-        case let .exactInteger(val):
-            (val, false)
-
-        case let .floatingPoint(val) where val.isInteger:
-            (val.exactIntegerValue, true)
-
-        case let .fraction(val) where val.isInteger:
-            (val.numerator, false)
-
-        default:
-            fatalError("\(value) must be an integer")
-        }
-    }
-
     private func _toFloatingPoint() -> FloatingPoint {
         switch value {
         case let .exactInteger(val):
@@ -899,6 +877,22 @@ extension Real {
 
         case let .fraction(val):
             return val
+        }
+    }
+
+    private func _toInteger() -> (value: ExactInteger, inexact: Bool) {
+        switch value {
+        case let .exactInteger(val):
+            (val, false)
+
+        case let .floatingPoint(val) where val.isInteger:
+            (val.exactIntegerValue, true)
+
+        case let .fraction(val) where val.isInteger:
+            (val.numerator, false)
+
+        default:
+            fatalError("\(value) must be an integer")
         }
     }
 }

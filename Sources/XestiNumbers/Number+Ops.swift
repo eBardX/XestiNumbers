@@ -186,74 +186,6 @@ extension Number {
         z1 = z1 / z2
     }
 
-    /// Performs a bitwise OR operation on the two provided numbers and returns
-    /// the result.
-    ///
-    /// - Warning:  This operation is only defined for integers. Both operands
-    ///             must be integers; applying this operation to non-integers
-    ///             will result in a fatal error.
-    ///
-    /// - Parameter n1: The first number on which to perform the bitwise OR
-    ///                 operation.
-    /// - Parameter n2: The second number on which to perform the bitwise OR
-    ///                 operation.
-    ///
-    /// - Returns:  The result of the bitwise OR operation.
-    public static func | (n1: Self,
-                          n2: Self) -> Self {
-        Self(.real(n1.checkInteger().bitwiseOr(with: n2.checkInteger())))
-    }
-
-    /// Performs a bitwise OR operation on the two provided numbers and stores
-    /// the result in the left-hand-side variable.
-    ///
-    /// - Warning:  This operation is only defined for integers. Both operands
-    ///             must be integers; applying this operation to non-integers
-    ///             will result in a fatal error.
-    ///
-    /// - Parameter n1: The first number on which to perform the bitwise OR
-    ///                 operation.
-    /// - Parameter n2: The second number on which to perform the bitwise OR
-    ///                 operation.
-    public static func |= (n1: inout Self,
-                           n2: Self) {
-        n1 = n1 | n2
-    }
-
-    /// Performs a bitwise XOR operation on the two provided numbers and returns
-    /// the result.
-    ///
-    /// - Warning:  This operation is only defined for integers. Both operands
-    ///             must be integers; applying this operation to non-integers
-    ///             will result in a fatal error.
-    ///
-    /// - Parameter n1: The first number on which to perform the bitwise XOR
-    ///                 operation.
-    /// - Parameter n2: The second number on which to perform the bitwise XOR
-    ///                 operation.
-    ///
-    /// - Returns:  The result of the bitwise XOR operation.
-    public static func ^ (n1: Self,
-                          n2: Self) -> Self {
-        Self(.real(n1.checkInteger().bitwiseXor(with: n2.checkInteger())))
-    }
-
-    /// Performs a bitwise XOR operation on the two provided numbers and stores
-    /// the result in the left-hand-side variable.
-    ///
-    /// - Warning:  This operation is only defined for integers. Both operands
-    ///             must be integers; applying this operation to non-integers
-    ///             will result in a fatal error.
-    ///
-    /// - Parameter n1: The first number on which to perform the bitwise XOR
-    ///                 operation.
-    /// - Parameter n2: The second number on which to perform the bitwise XOR
-    ///                 operation.
-    public static func ^= (n1: inout Self,
-                           n2: Self) {
-        n1 = n1 ^ n2
-    }
-
     /// Shifts the provided number to the left by the specified bit count and
     /// returns the result.
     ///
@@ -312,6 +244,74 @@ extension Number {
     public static func >>= (n: inout Self,
                             k: Int) {
         n = n >> k
+    }
+
+    /// Performs a bitwise XOR operation on the two provided numbers and returns
+    /// the result.
+    ///
+    /// - Warning:  This operation is only defined for integers. Both operands
+    ///             must be integers; applying this operation to non-integers
+    ///             will result in a fatal error.
+    ///
+    /// - Parameter n1: The first number on which to perform the bitwise XOR
+    ///                 operation.
+    /// - Parameter n2: The second number on which to perform the bitwise XOR
+    ///                 operation.
+    ///
+    /// - Returns:  The result of the bitwise XOR operation.
+    public static func ^ (n1: Self,
+                          n2: Self) -> Self {
+        Self(.real(n1.checkInteger().bitwiseXor(with: n2.checkInteger())))
+    }
+
+    /// Performs a bitwise XOR operation on the two provided numbers and stores
+    /// the result in the left-hand-side variable.
+    ///
+    /// - Warning:  This operation is only defined for integers. Both operands
+    ///             must be integers; applying this operation to non-integers
+    ///             will result in a fatal error.
+    ///
+    /// - Parameter n1: The first number on which to perform the bitwise XOR
+    ///                 operation.
+    /// - Parameter n2: The second number on which to perform the bitwise XOR
+    ///                 operation.
+    public static func ^= (n1: inout Self,
+                           n2: Self) {
+        n1 = n1 ^ n2
+    }
+
+    /// Performs a bitwise OR operation on the two provided numbers and returns
+    /// the result.
+    ///
+    /// - Warning:  This operation is only defined for integers. Both operands
+    ///             must be integers; applying this operation to non-integers
+    ///             will result in a fatal error.
+    ///
+    /// - Parameter n1: The first number on which to perform the bitwise OR
+    ///                 operation.
+    /// - Parameter n2: The second number on which to perform the bitwise OR
+    ///                 operation.
+    ///
+    /// - Returns:  The result of the bitwise OR operation.
+    public static func | (n1: Self,
+                          n2: Self) -> Self {
+        Self(.real(n1.checkInteger().bitwiseOr(with: n2.checkInteger())))
+    }
+
+    /// Performs a bitwise OR operation on the two provided numbers and stores
+    /// the result in the left-hand-side variable.
+    ///
+    /// - Warning:  This operation is only defined for integers. Both operands
+    ///             must be integers; applying this operation to non-integers
+    ///             will result in a fatal error.
+    ///
+    /// - Parameter n1: The first number on which to perform the bitwise OR
+    ///                 operation.
+    /// - Parameter n2: The second number on which to perform the bitwise OR
+    ///                 operation.
+    public static func |= (n1: inout Self,
+                           n2: Self) {
+        n1 = n1 | n2
     }
 
     /// Performs a bitwise NOT operation on the provided number and returns the
