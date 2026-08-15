@@ -4,7 +4,7 @@ public import Foundation
 
 extension AttributeDynamicLookup {
 
-    // MARK: Public Subscripts
+    // MARK: Public Instance Subscripts
 
     /// Looks up the attribute at the given key path in the
     /// ``AttributeScopes/XestiNumbersAttributes`` scope.
