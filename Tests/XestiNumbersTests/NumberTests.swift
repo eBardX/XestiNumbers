@@ -122,4 +122,17 @@ extension NumberTests {
 
         #expect(set.count == 1)
     }
+
+    @Test
+    func hashable_exactInexactEquality() {
+        let exact = Number(1)
+        let inexact = Number(1.0)
+
+        #expect(exact == inexact)
+        #expect(exact.hashValue == inexact.hashValue)
+
+        let set: Set<Number> = [exact, inexact]
+
+        #expect(set.count == 1)
+    }
 }

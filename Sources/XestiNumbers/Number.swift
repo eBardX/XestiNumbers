@@ -148,13 +148,18 @@ extension Number: ExpressibleByStringLiteral {
 extension Number: Hashable {
     /// - Note: Because `Number` emulates a Scheme number tower, the `Equatable`
     ///         conformance compares across internal representations (for
-    ///         example, exact integer `1` equals inexact `1.0`). This can cause
-    ///         equal values to produce different hash values, violating the
-    ///         `Hashable` contract. Use caution when using `Number` values as
-    ///         dictionary keys or set members if mixing exact and inexact
-    ///         representations.
+    ///         example, exact integer `1` equals inexact `1.0`). To honor the
+    ///         `Hashable` contract, this hashes the real and imaginary parts as
+    ///         `Double` values rather than the internal representation, so that
+    ///         values considered equal always produce the same hash. This does
+    ///         mean, however, that some unequal values (for example, distinct
+    ///         exact integers too large to be represented precisely as `Double`)
+    ///         may collide and produce the same hash value.
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(String(describing: self))
+        let cval = toComplex()
+
+        hasher.combine(cval.realPart.floatingPointValue.doubleValue)
+        hasher.combine(cval.imaginaryPart.floatingPointValue.doubleValue)
     }
 }
 

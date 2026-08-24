@@ -102,6 +102,13 @@ extension FloatingPointTests {
     }
 
     @Test
+    func exponential_base() {
+        #expect(fp(3.0).exponential(base: fp(2.0)).testEqual(to: fp(8.0)))
+        #expect(fp(0.0).exponential(base: fp(5.0)).testEqual(to: fp(1.0)))
+        #expect(fp(2.0).exponential(base: fp(10.0)).testEqual(to: fp(100.0)))
+    }
+
+    @Test
     func exponentialBase10() {
         #expect(fp(2.0).exponentialBase10().testEqual(to: fp(100.0)))
         #expect(fp(0.0).exponentialBase10().testEqual(to: fp(1.0)))
@@ -113,13 +120,6 @@ extension FloatingPointTests {
         #expect(fp(3.0).exponentialBase2().testEqual(to: fp(8.0)))
         #expect(fp(0.0).exponentialBase2().testEqual(to: fp(1.0)))
         #expect(fp(10.0).exponentialBase2().testEqual(to: fp(1_024.0)))
-    }
-
-    @Test
-    func exponential_base() {
-        #expect(fp(3.0).exponential(base: fp(2.0)).testEqual(to: fp(8.0)))
-        #expect(fp(0.0).exponential(base: fp(5.0)).testEqual(to: fp(1.0)))
-        #expect(fp(2.0).exponential(base: fp(10.0)).testEqual(to: fp(100.0)))
     }
 
     @Test
@@ -360,6 +360,13 @@ extension FloatingPointTests {
     }
 
     @Test
+    func logarithm_base() {
+        #expect(fp(8.0).logarithm(base: fp(2.0)).testEqual(to: fp(3.0)))
+        #expect(fp(100.0).logarithm(base: fp(10.0)).testEqual(to: fp(2.0)))
+        #expect(fp(1.0).logarithm(base: fp(5.0)).testEqual(to: fp(0.0)))
+    }
+
+    @Test
     func logarithmBase10() {
         #expect(fp(100.0).logarithmBase10().testEqual(to: fp(2.0)))
         #expect(fp(1.0).logarithmBase10().testEqual(to: fp(0.0)))
@@ -371,13 +378,6 @@ extension FloatingPointTests {
         #expect(fp(8.0).logarithmBase2().testEqual(to: fp(3.0)))
         #expect(fp(1.0).logarithmBase2().testEqual(to: fp(0.0)))
         #expect(fp(1_024.0).logarithmBase2().testEqual(to: fp(10.0)))
-    }
-
-    @Test
-    func logarithm_base() {
-        #expect(fp(8.0).logarithm(base: fp(2.0)).testEqual(to: fp(3.0)))
-        #expect(fp(100.0).logarithm(base: fp(10.0)).testEqual(to: fp(2.0)))
-        #expect(fp(1.0).logarithm(base: fp(5.0)).testEqual(to: fp(0.0)))
     }
 
     @Test

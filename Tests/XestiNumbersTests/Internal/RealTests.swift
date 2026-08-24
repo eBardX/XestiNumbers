@@ -186,6 +186,13 @@ extension RealTests {
     }
 
     @Test
+    func exponential_base() {
+        #expect(rei(0).exponential(base: rei(2)).isEqual(to: rfp(1.0)))
+        #expect(rfp(0.0).exponential(base: rfp(10.0)).isEqual(to: rfp(1.0)))
+        #expect(rfr(0, 1).exponential(base: rei(5)).isEqual(to: rfp(1.0)))
+    }
+
+    @Test
     func exponentialBase10() {
         #expect(rei(0).exponentialBase10().isEqual(to: rfp(1.0)))
         #expect(rei(2).exponentialBase10().isEqual(to: rfp(100.0)))
@@ -197,13 +204,6 @@ extension RealTests {
         #expect(rei(0).exponentialBase2().isEqual(to: rfp(1.0)))
         #expect(rei(3).exponentialBase2().isEqual(to: rfp(8.0)))
         #expect(rfp(0.0).exponentialBase2().isEqual(to: rfp(1.0)))
-    }
-
-    @Test
-    func exponential_base() {
-        #expect(rei(0).exponential(base: rei(2)).isEqual(to: rfp(1.0)))
-        #expect(rfp(0.0).exponential(base: rfp(10.0)).isEqual(to: rfp(1.0)))
-        #expect(rfr(0, 1).exponential(base: rei(5)).isEqual(to: rfp(1.0)))
     }
 
     @Test
@@ -476,6 +476,12 @@ extension RealTests {
     }
 
     @Test
+    func logarithm_base() {
+        #expect(rei(1).logarithm(base: rei(10)).isEqual(to: rfp(0.0)))
+        #expect(rfp(1.0).logarithm(base: rfp(10.0)).isEqual(to: rfp(0.0)))
+    }
+
+    @Test
     func logarithmBase10() {
         #expect(rei(1).logarithmBase10().isEqual(to: rfp(0.0)))
         #expect(rei(100).logarithmBase10().isEqual(to: rfp(2.0)))
@@ -487,12 +493,6 @@ extension RealTests {
         #expect(rei(1).logarithmBase2().isEqual(to: rfp(0.0)))
         #expect(rei(8).logarithmBase2().isEqual(to: rfp(3.0)))
         #expect(rfp(1.0).logarithmBase2().isEqual(to: rfp(0.0)))
-    }
-
-    @Test
-    func logarithm_base() {
-        #expect(rei(1).logarithm(base: rei(10)).isEqual(to: rfp(0.0)))
-        #expect(rfp(1.0).logarithm(base: rfp(10.0)).isEqual(to: rfp(0.0)))
     }
 
     @Test
