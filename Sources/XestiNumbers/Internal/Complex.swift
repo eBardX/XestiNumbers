@@ -286,7 +286,7 @@ extension Complex {
         ExternalFormat.tan(_toExternalFormat())._toInternalFormat()
     }
 
-    // MARK: Private Nested Types
+    // MARK: Private Type Aliases
 
     private typealias ExternalFormat = ComplexModule.Complex<Double>
 

@@ -8,8 +8,13 @@ extension AttributeScopes {
 
     /// An attribute scope for attributes defined by the XestiNumbers
     /// framework.
-    public struct XestiNumbersAttributes: AttributeScope {
+    public struct XestiNumbersAttributes {
         /// The formatted number attribute scope.
         public let formattedNumber: FormattedNumberAttributes
     }
+}
+
+// MARK: - AttributeScope
+
+extension AttributeScopes.XestiNumbersAttributes: AttributeScope {
 }

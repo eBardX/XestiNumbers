@@ -1,6 +1,6 @@
 // © 2025–2026 John Gary Pusey (see LICENSE.md)
 
-@preconcurrency import RegexBuilder
+@preconcurrency internal import RegexBuilder
 
 extension Number {
 

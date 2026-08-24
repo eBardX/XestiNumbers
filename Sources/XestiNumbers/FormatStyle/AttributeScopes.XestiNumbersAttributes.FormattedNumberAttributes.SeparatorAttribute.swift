@@ -9,8 +9,16 @@ extension AttributeScopes.XestiNumbersAttributes.FormattedNumberAttributes {
     /// An attributed string attribute that identifies the kind of separator
     /// character applied to a run of text in a number formatted by
     /// ``Number/FormatStyle``.
-    public enum SeparatorAttribute: CodableAttributedStringKey {
-        /// The name used to identify this attribute.
-        public static let name = "XestiNumbers.Separator"
+    public enum SeparatorAttribute {
     }
+}
+
+// MARK: - CodableAttributedStringKey
+
+extension AttributeScopes.XestiNumbersAttributes.FormattedNumberAttributes.SeparatorAttribute: CodableAttributedStringKey {
+
+    // MARK: Public Type Properties
+
+    /// The name used to identify this attribute.
+    public static let name = "XestiNumbers.Separator"
 }

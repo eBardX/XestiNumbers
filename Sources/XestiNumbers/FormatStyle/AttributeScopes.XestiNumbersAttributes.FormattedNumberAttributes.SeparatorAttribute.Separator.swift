@@ -13,7 +13,7 @@ extension AttributeScopes.XestiNumbersAttributes.FormattedNumberAttributes.Separ
 
     /// A kind of separator character in a number formatted by
     /// ``Number/FormatStyle``.
-    public enum Separator: Int, Codable {
+    public enum Separator: Int {
         /// The separator between the real and imaginary parts of a formatted
         /// complex number.
         case complex
@@ -33,6 +33,11 @@ extension AttributeScopes.XestiNumbersAttributes.FormattedNumberAttributes.Separ
         /// ratio.
         case ratio
     }
+}
+
+// MARK: - Codable
+
+extension AttributeScopes.XestiNumbersAttributes.FormattedNumberAttributes.SeparatorAttribute.Separator: Codable {
 }
 
 // MARK: - Sendable

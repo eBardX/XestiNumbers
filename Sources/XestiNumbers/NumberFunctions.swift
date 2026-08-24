@@ -594,7 +594,7 @@ public func remainder(_ n1: Number,
 /// the provided number is halfway between two integers, and returns the result.
 ///
 /// This function rounds to even for consistency with the default rounding mode
-/// specified by the IEEE 754 IEEE floating-point standard.
+/// specified by the IEEE 754 floating-point standard.
 ///
 /// If the provided number is inexact, then the result will also be inexact. If
 /// the provided number is infinite or a NaN, then it is returned.

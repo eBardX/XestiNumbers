@@ -8,8 +8,13 @@ extension AttributeScopes.XestiNumbersAttributes {
 
     /// An attribute scope for attributes applied to numbers formatted by
     /// ``Number/FormatStyle``.
-    public struct FormattedNumberAttributes: AttributeScope {
+    public struct FormattedNumberAttributes {
         /// The separator attribute.
         public let separator: SeparatorAttribute
     }
+}
+
+// MARK: - AttributeScope
+
+extension AttributeScopes.XestiNumbersAttributes.FormattedNumberAttributes: AttributeScope {
 }
