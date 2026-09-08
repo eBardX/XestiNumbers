@@ -191,7 +191,20 @@ extension Number.FormatStyle.ParseStrategy: ParseStrategy {
         guard let signIndex = body.indices.dropFirst().last(where: {
             body[$0] == Number.FormatStyle.plusSign || body[$0] == Number.FormatStyle.minusSign
         })
-        else { return nil }
+        else {
+            // No internal sign: the real part is never shown by this format
+            // style with a zero value omitted, but Scheme's own complex
+            // number syntax allows exactly this shape — an explicitly
+            // signed imaginary part with no real part at all ("+3i",
+            // "-3i") — so accept it as an implicit zero real part.
+            guard let first = body.first,
+                  first == Number.FormatStyle.plusSign || first == Number.FormatStyle.minusSign,
+                  let imagPart = _parseReal(String(body))
+            else { return nil }
+
+            return Number(.complex(Complex(realPart: .exactZero,
+                                           imaginaryPart: imagPart)))
+        }
 
         let realText = String(body[body.startIndex..<signIndex])
         let imagText = String(body[signIndex...])
@@ -235,11 +248,11 @@ extension Number.FormatStyle.ParseStrategy: ParseStrategy {
                                                    spaceIndex: spaceIndex)
         }
 
-        // A quotient of zero is entirely omitted only when the strategy
-        // doesn't always show the integer part; what remains is exactly the
-        // "simple fraction" syntax.
-        guard !fractionDisplay.useAlternate,
-              let sepIndex = text.firstIndex(of: Number.FormatStyle.fractionSeparator)
+        // With no quotient present, accept the "simple fraction" syntax as
+        // an implicit quotient of zero — even when the strategy always
+        // shows the integer part on format, the shape is unambiguous on
+        // parse, so there's no reason to reject it.
+        guard let sepIndex = text.firstIndex(of: Number.FormatStyle.fractionSeparator)
         else { return nil }
 
         let remText = text[text.startIndex..<sepIndex]

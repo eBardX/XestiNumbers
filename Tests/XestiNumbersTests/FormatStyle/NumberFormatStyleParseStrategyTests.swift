@@ -21,6 +21,12 @@ extension NumberFormatStyleParseStrategyTests {
         #expect(try fs.parseStrategy.parse("1,234+0i") == ncx(1_234, 0))
         #expect(try fs.parseStrategy.parse("1,234-1i") == ncx(1_234, -1))
         #expect(try fs.parseStrategy.parse("-1,234-1i") == ncx(-1_234, -1))
+
+        // No real part shown is never produced by format, but it's exactly
+        // Scheme's own "signed imaginary, no real part" complex syntax, so
+        // it's accepted as an implicit zero real part on parse.
+        #expect(try fs.parseStrategy.parse("+4,567i") == ncx(0, 4_567))
+        #expect(try fs.parseStrategy.parse("-4,567i") == ncx(0, -4_567))
     }
 
     @Test
@@ -119,6 +125,11 @@ extension NumberFormatStyleParseStrategyTests {
         #expect(try fs.parseStrategy.parse("-0 583/6,472") == nfr(-583, 6_472))
         #expect(try fs.parseStrategy.parse("445 7/9") == nfr(4_012, 9))
         #expect(try fs.parseStrategy.parse("-445 7/9") == nfr(-4_012, 9))
+
+        // A zero quotient may also be omitted entirely, even though this
+        // strategy always shows it on format — the shape is unambiguous.
+        #expect(try fs.parseStrategy.parse("123/4,567") == nfr(123, 4_567))
+        #expect(try fs.parseStrategy.parse("-583/6,472") == nfr(-583, 6_472))
     }
 
     @Test
@@ -166,6 +177,10 @@ extension NumberFormatStyleParseStrategyTests {
 
         #expect(throws: Number.FormatStyle.ParseError(input: "123/0")) {
             try fs.parseStrategy.parse("123/0")   // zero denominator
+        }
+
+        #expect(throws: Number.FormatStyle.ParseError(input: "4,567i")) {
+            try fs.parseStrategy.parse("4,567i")   // unsigned imaginary part, no real part
         }
     }
 
