@@ -350,6 +350,11 @@ extension Number.FormatStyle: FormatStyle {
     }
 }
 
+// MARK: - Sendable
+
+extension Number.FormatStyle: Sendable {
+}
+
 // MARK: -
 
 extension FormatStyle where Self == Number.FormatStyle {

@@ -233,3 +233,8 @@ extension Number.FormatStyle.Attributed: FormatStyle {
         return result
     }
 }
+
+// MARK: - Sendable
+
+extension Number.FormatStyle.Attributed: Sendable {
+}

@@ -32,3 +32,8 @@ extension Number.FormatStyle.ParseError: Equatable {
 
 extension Number.FormatStyle.ParseError: Error {
 }
+
+// MARK: - Sendable
+
+extension Number.FormatStyle.ParseError: Sendable {
+}

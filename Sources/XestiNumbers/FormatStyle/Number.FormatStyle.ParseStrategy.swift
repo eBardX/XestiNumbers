@@ -417,6 +417,11 @@ extension Number.FormatStyle.ParseStrategy: Codable {
 extension Number.FormatStyle.ParseStrategy: Hashable {
 }
 
+// MARK: - Sendable
+
+extension Number.FormatStyle.ParseStrategy: Sendable {
+}
+
 // MARK: -
 
 extension Number.FormatStyle {

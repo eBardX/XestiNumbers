@@ -184,3 +184,8 @@ extension Number.FractionDisplayStrategy: CustomStringConvertible {
 
 extension Number.FractionDisplayStrategy: Hashable {
 }
+
+// MARK: - Sendable
+
+extension Number.FractionDisplayStrategy: Sendable {
+}

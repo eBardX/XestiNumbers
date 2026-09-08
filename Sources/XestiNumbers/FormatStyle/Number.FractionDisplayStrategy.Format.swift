@@ -16,3 +16,8 @@ extension Number.FractionDisplayStrategy {
 
 extension Number.FractionDisplayStrategy.Format: Codable {
 }
+
+// MARK: - Sendable
+
+extension Number.FractionDisplayStrategy.Format: Sendable {
+}
