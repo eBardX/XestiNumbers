@@ -31,6 +31,7 @@ extension Number {
                 .precision(.fractionLength(range))
                 .rounded(rule: .toNearestOrAwayFromZero)
             self.fractionDisplay = .simple()
+            self.grouping = true
             self.intFormatStyle = IntegerFormatStyle<Int>(locale: locale)
                 .decimalSeparator(strategy: .automatic)
                 .grouping(.automatic)
@@ -55,6 +56,7 @@ extension Number {
         internal var decimalPrecision: ClosedRange<Int>
         internal var doubleFormatStyle: FloatingPointFormatStyle<Double>
         internal var fractionDisplay: Number.FractionDisplayStrategy
+        internal var grouping: Bool
         internal var intFormatStyle: IntegerFormatStyle<Int>
     }
 }
@@ -133,6 +135,29 @@ extension Number.FormatStyle: FormatStyle {
         var new = self
 
         new.fractionDisplay = strategy
+
+        return new
+    }
+
+    /// Modifies this format style to use the provided grouping behavior.
+    ///
+    /// Use this format style to change whether grouping separators (such as
+    /// thousands separators) are inserted when formatting an exact integer
+    /// or floating-point number.
+    ///
+    /// - Parameter isEnabled:  `true` to show grouping separators; `false`
+    ///                         to suppress them. Defaults to `true`.
+    ///
+    /// - Returns:  A number format style modified to use the provided
+    ///             grouping behavior.
+    public func grouping(_ isEnabled: Bool = true) -> Self {
+        let group: NumberFormatStyleConfiguration.Grouping = isEnabled ? .automatic : .never
+
+        var new = self
+
+        new.doubleFormatStyle = doubleFormatStyle.grouping(group)
+        new.grouping = isEnabled
+        new.intFormatStyle = intFormatStyle.grouping(group)
 
         return new
     }
@@ -270,9 +295,7 @@ extension Number.FormatStyle: FormatStyle {
 
         var result = value < 0 ? String(Self.minusSign) : ""
 
-        if magStr.count > 3 {
-            let grpSep = locale.groupingSeparator ?? ","
-
+        if let grpSep = _groupingSeparator(), magStr.count > 3 {
             var group = (3 - (magStr.count % 3)) % 3
 
             for char in magStr {
@@ -308,6 +331,22 @@ extension Number.FormatStyle: FormatStyle {
 
     private func _formatSmall(_ value: Int) -> String {
         intFormatStyle.format(value)
+    }
+
+    private func _groupingSeparator() -> String? {
+        guard grouping
+        else { return nil }
+
+        // Probe `intFormatStyle` — which already carries the correct
+        // automatic/never grouping policy for `locale` — instead of trusting
+        // `locale.groupingSeparator`, which can be non-nil even for locales
+        // (such as `en_US_POSIX`) whose automatic grouping policy is off.
+        let probe = intFormatStyle.format(1_000)
+
+        guard let separator = probe.first(where: { !$0.isNumber })
+        else { return nil }
+
+        return String(separator)
     }
 }
 

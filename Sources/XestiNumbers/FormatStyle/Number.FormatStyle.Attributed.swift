@@ -188,7 +188,7 @@ extension Number.FormatStyle.Attributed: FormatStyle {
                       ? AttributedString(String(Number.FormatStyle.minusSign))
                       : AttributedString())
 
-        if magStr.count > 3 {
+        if baseStyle.grouping, magStr.count > 3 {
             let grpSep = AttributedString(baseStyle.locale.groupingSeparator ?? ",")
 
             var group = (3 - (magStr.count % 3)) % 3

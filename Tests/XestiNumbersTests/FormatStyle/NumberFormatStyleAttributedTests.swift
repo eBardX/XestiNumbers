@@ -5,6 +5,7 @@ import Testing
 @testable import XestiNumbers
 
 struct NumberFormatStyleAttributedTests {
+    private let usLocale = Locale(identifier: "en_US")
 }
 
 // MARK: -
@@ -12,7 +13,7 @@ struct NumberFormatStyleAttributedTests {
 extension NumberFormatStyleAttributedTests {
     @Test
     func format_complex() {
-        let fs = Number.FormatStyle().decimalPrecision(1...3).attributed
+        let fs = Number.FormatStyle(locale: usLocale).decimalPrecision(1...3).attributed
 
         #expect(fs.format(ncx(123, 4_567)) ==
                 "123" +
@@ -50,7 +51,7 @@ extension NumberFormatStyleAttributedTests {
 
     @Test
     func format_exactInteger() {
-        let fs = Number.FormatStyle().attributed
+        let fs = Number.FormatStyle(locale: usLocale).attributed
 
         #expect(fs.format(123) == "123")
         #expect(fs.format(1_234) == "1,234")
@@ -64,7 +65,7 @@ extension NumberFormatStyleAttributedTests {
 
     @Test
     func format_floatingPoint() {
-        let fs = Number.FormatStyle().decimalPrecision(1...3).attributed
+        let fs = Number.FormatStyle(locale: usLocale).decimalPrecision(1...3).attributed
 
         #expect(fs.format(123.0) ==
                 "123" +
@@ -93,7 +94,7 @@ extension NumberFormatStyleAttributedTests {
 
     @Test
     func format_fraction_decimal() {
-        let fs = Number.FormatStyle().decimalPrecision(0...3).fractionDisplay(strategy: .decimal).attributed
+        let fs = Number.FormatStyle(locale: usLocale).decimalPrecision(0...3).fractionDisplay(strategy: .decimal).attributed
 
         #expect(fs.format(nfr(123, 4_567)) ==
                 "0" +
@@ -124,7 +125,7 @@ extension NumberFormatStyleAttributedTests {
 
     @Test
     func format_fraction_default() {
-        let fs = Number.FormatStyle().attributed    // == .fractionDisplay(strategy: .simple(alwaysShowDenominator: true))
+        let fs = Number.FormatStyle(locale: usLocale).attributed    // == .fractionDisplay(strategy: .simple(alwaysShowDenominator: true))
 
         #expect(fs.format(nfr(123, 4_567)) ==
                 "123" +
@@ -158,7 +159,7 @@ extension NumberFormatStyleAttributedTests {
 
     @Test
     func format_fraction_mixed_default() {
-        let fs = Number.FormatStyle().fractionDisplay(strategy: .mixed()).attributed    // == .mixed(alwaysShowInteger: false)
+        let fs = Number.FormatStyle(locale: usLocale).fractionDisplay(strategy: .mixed()).attributed    // == .mixed(alwaysShowInteger: false)
 
         #expect(fs.format(nfr(123, 4_567)) ==
                 "123" +
@@ -197,7 +198,7 @@ extension NumberFormatStyleAttributedTests {
 
     @Test
     func format_fraction_mixed_true() {
-        let fs = Number.FormatStyle().fractionDisplay(strategy: .mixed(alwaysShowInteger: true)).attributed
+        let fs = Number.FormatStyle(locale: usLocale).fractionDisplay(strategy: .mixed(alwaysShowInteger: true)).attributed
 
         #expect(fs.format(nfr(123, 4_567)) ==
                 "0" +
@@ -242,7 +243,7 @@ extension NumberFormatStyleAttributedTests {
 
     @Test
     func format_fraction_ratio() {
-        let fs = Number.FormatStyle().fractionDisplay(strategy: .ratio).attributed
+        let fs = Number.FormatStyle(locale: usLocale).fractionDisplay(strategy: .ratio).attributed
 
         #expect(fs.format(nfr(123, 4_567)) ==
                 "123" +
@@ -276,7 +277,7 @@ extension NumberFormatStyleAttributedTests {
 
     @Test
     func format_fraction_simple_false() {
-        let fs = Number.FormatStyle().fractionDisplay(strategy: .simple(alwaysShowDenominator: false)).attributed
+        let fs = Number.FormatStyle(locale: usLocale).fractionDisplay(strategy: .simple(alwaysShowDenominator: false)).attributed
 
         #expect(fs.format(nfr(123, 4_567)) ==
                 "123" +
@@ -300,5 +301,39 @@ extension NumberFormatStyleAttributedTests {
                 mas("/", AttributeContainer.separator(.fraction)) +
                 "9")
         #expect(fs.format(nfr(4_012, 4)) == "1,003")
+    }
+
+    @Test
+    func format_grouping_false() {
+        let fs = Number.FormatStyle(locale: usLocale).decimalPrecision(1...3).grouping(false).attributed
+
+        #expect(fs.format(1_234) == "1234")
+        #expect(fs.format(-5_836_472) == "-5836472")
+        #expect(fs.format("12345678901234567890123456789012345678901234567890") ==
+                "12345678901234567890123456789012345678901234567890")
+        #expect(fs.format(1_234.25) ==
+                "1234" +
+                mas(".", AttributeContainer.separator(.decimal)) +
+                "25")
+        #expect(fs.format(nfr(1_234, 56_789)) ==
+                "1234" +
+                mas("/", AttributeContainer.separator(.fraction)) +
+                "56789")
+    }
+
+    @Test
+    func format_grouping_true() {
+        let fs = Number.FormatStyle(locale: usLocale).decimalPrecision(1...3).grouping().attributed
+
+        #expect(fs.format(1_234) == "1,234")
+        #expect(fs.format(-5_836_472) == "-5,836,472")
+        #expect(fs.format(1_234.25) ==
+                "1,234" +
+                mas(".", AttributeContainer.separator(.decimal)) +
+                "25")
+        #expect(fs.format(nfr(1_234, 56_789)) ==
+                "1,234" +
+                mas("/", AttributeContainer.separator(.fraction)) +
+                "56,789")
     }
 }

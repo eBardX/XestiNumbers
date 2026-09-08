@@ -1,5 +1,7 @@
 // © 2025–2026 John Gary Pusey (see LICENSE.md)
 
+public import Foundation
+
 extension Number {
 
     // MARK: Public Type Methods
@@ -20,6 +22,33 @@ extension Number {
         return parse(input: text,
                      radix: radix,
                      exactness: exactness)
+    }
+
+    // MARK: Public Initializers
+
+    /// Creates a number by parsing the provided string with the given
+    /// format style.
+    ///
+    /// - Parameter value:  The string to parse.
+    /// - Parameter format: The format style whose ``FormatStyle/parseStrategy``
+    ///                     is used to parse `value`.
+    ///
+    /// - Throws:   An error if `value` cannot be parsed by `format`.
+    public init<T: ParseableFormatStyle>(_ value: T.FormatOutput,
+                                         format: T) throws where T.FormatInput == Self {
+        self = try format.parseStrategy.parse(value)
+    }
+
+    /// Creates a number by parsing the provided string with the given parse
+    /// strategy.
+    ///
+    /// - Parameter value:      The string to parse.
+    /// - Parameter strategy:   The parse strategy used to parse `value`.
+    ///
+    /// - Throws:   An error if `value` cannot be parsed by `strategy`.
+    public init<T: Foundation.ParseStrategy>(_ value: T.ParseInput,
+                                             strategy: T) throws where T.ParseOutput == Self {
+        self = try strategy.parse(value)
     }
 
     // MARK: Internal Type Methods
